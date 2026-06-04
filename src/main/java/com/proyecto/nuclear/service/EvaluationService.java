@@ -1,11 +1,11 @@
-package com.proyecto.nuclear.service.impl;
+package com.proyecto.nuclear.service;
 
 
 import com.proyecto.nuclear.entity.Evaluation;
 
 import java.util.List;
 
-public interface EvaluationServiceImpl {
+public interface EvaluationService {
 
     Evaluation createEvaluation(
             Evaluation evaluation);

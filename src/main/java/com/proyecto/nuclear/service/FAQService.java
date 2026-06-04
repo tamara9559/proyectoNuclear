@@ -1,11 +1,11 @@
-package com.proyecto.nuclear.service.impl;
+package com.proyecto.nuclear.service;
 
 import com.proyecto.nuclear.entity.FAQ;
 import com.proyecto.nuclear.enums.CategoriaFAQ;
 
 import java.util.List;
 
-public interface FAQServiceImpl {
+public interface FAQService {
 
     FAQ createFaq(FAQ faq);
 

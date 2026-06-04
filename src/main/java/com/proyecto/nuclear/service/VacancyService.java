@@ -1,10 +1,10 @@
-package com.proyecto.nuclear.service.impl;
+package com.proyecto.nuclear.service;
 
 import com.proyecto.nuclear.entity.Vacancy;
 
 import java.util.List;
 
-public interface VacancyServiceImpl {
+public interface VacancyService {
 
     Vacancy createVacancy(Vacancy vacancy);
 

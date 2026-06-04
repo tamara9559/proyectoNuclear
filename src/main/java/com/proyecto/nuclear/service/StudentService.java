@@ -1,4 +1,4 @@
-package com.proyecto.nuclear.service.impl;
+package com.proyecto.nuclear.service;
 
 
 import com.proyecto.nuclear.entity.Student;
@@ -6,7 +6,7 @@ import com.proyecto.nuclear.enums.EstadoPracticaEstudiante;
 
 import java.util.List;
 
-public interface StudentServiceImpl {
+public interface StudentService {
 
     Student createStudent(Student student);
 

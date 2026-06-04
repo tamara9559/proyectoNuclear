@@ -1,10 +1,10 @@
-package com.proyecto.nuclear.service.impl;
+package com.proyecto.nuclear.service;
 
 import com.proyecto.nuclear.entity.Practice;
 
 import java.util.List;
 
-public interface PracticeServiceImpl {
+public interface PracticeService {
 
     Practice createPractice(Practice practice);
 

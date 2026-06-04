@@ -1,10 +1,10 @@
-package com.proyecto.nuclear.service.impl;
+package com.proyecto.nuclear.service;
 
 import com.proyecto.nuclear.entity.Company;
 
 import java.util.List;
 
-public interface CompanyServiceImpl {
+public interface CompanyService {
 
     Company createCompany(Company company);
 

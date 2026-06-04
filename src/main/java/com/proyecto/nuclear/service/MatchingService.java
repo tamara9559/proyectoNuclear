@@ -1,11 +1,11 @@
-package com.proyecto.nuclear.service.impl;
+package com.proyecto.nuclear.service;
 
 import com.proyecto.nuclear.entity.Student;
 import com.proyecto.nuclear.entity.Vacancy;
 
 import java.util.List;
 
-public interface MatchingServiceImpl {
+public interface MatchingService {
 
     List<Student> findCompatibleStudents(Long vacancyId);
 

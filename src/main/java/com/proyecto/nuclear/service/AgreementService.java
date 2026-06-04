@@ -1,10 +1,10 @@
-package com.proyecto.nuclear.service.impl;
+package com.proyecto.nuclear.service;
 
 import com.proyecto.nuclear.entity.Agreement;
 
 import java.util.List;
 
-public interface AgreementServiceImpl {
+public interface AgreementService {
 
     Agreement createAgreement(
             Agreement agreement);

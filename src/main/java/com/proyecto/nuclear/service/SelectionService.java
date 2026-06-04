@@ -1,6 +1,6 @@
-package com.proyecto.nuclear.service.impl;
+package com.proyecto.nuclear.service;
 
-public interface SelectionServiceImpl {
+public interface SelectionService {
 
     void sendResumeToCompany(
             Long studentId,

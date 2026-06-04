@@ -1,10 +1,10 @@
-package com.proyecto.nuclear.service.impl;
+package com.proyecto.nuclear.service;
 
 import com.proyecto.nuclear.entity.Document;
 
 import java.util.List;
 
-public interface DocumentServiceImpl {
+public interface DocumentService {
 
     Document uploadDocument(
             Document document);

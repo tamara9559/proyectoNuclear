@@ -1,10 +1,10 @@
-package com.proyecto.nuclear.service.impl;
+package com.proyecto.nuclear.service;
 
 import com.proyecto.nuclear.entity.Monitoring;
 
 import java.util.List;
 
-public interface MonitoringServiceImpl {
+public interface MonitoringService {
 
     Monitoring registerVisit(
             Monitoring monitoring);
