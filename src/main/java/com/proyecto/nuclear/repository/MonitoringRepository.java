@@ -7,10 +7,10 @@ import java.util.List;
 
 public interface MonitoringRepository extends JpaRepository<Monitoring, Long> {
 
-    List<Monitoring> findByPracticaIdPractica(
+    List<Monitoring> findByPracticaId(
             Long practicaId);
 
-    List<Monitoring> findByCoordinadorIdUsuario(
+    List<Monitoring> findByCoordinadorId(
             Long coordinadorId);
 
 }

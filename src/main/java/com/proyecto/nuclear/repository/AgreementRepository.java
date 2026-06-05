@@ -8,7 +8,7 @@ import java.util.List;
 
 public interface AgreementRepository extends JpaRepository<Agreement, Long> {
 
-    List<Agreement> findByEmpresaIdEmpresa(
+    List<Agreement> findByEmpresaId(
             Long empresaId);
 
     List<Agreement> findByTipoConvenio(

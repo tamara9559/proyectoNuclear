@@ -8,13 +8,13 @@ import java.util.List;
 
 public interface DocumentRepository extends JpaRepository<Document, Long> {
 
-    List<Document> findByEstudianteIdEstudiante(
+    List<Document> findByEstudianteId(
             Long estudianteId);
 
-    List<Document> findByEmpresaIdEmpresa(
+    List<Document> findByEmpresaId(
             Long empresaId);
 
-    List<Document> findByConvenioIdConvenio(
+    List<Document> findByConvenioId(
             Long convenioId);
 
     List<Document> findByTipoDocumento(

@@ -8,10 +8,10 @@ import java.util.List;
 
 public interface PracticeRepository extends JpaRepository<Practice, Long> {
 
-    List<Practice> findByEstudianteIdEstudiante(
+    List<Practice> findByEstudianteId(
             Long estudianteId);
 
-    List<Practice> findByEmpresaIdEmpresa(
+    List<Practice> findByEmpresaId(
             Long empresaId);
 
     List<Practice> findByEstado(

@@ -9,7 +9,7 @@ import java.util.List;
 
 public interface VacancyRepository extends JpaRepository<Vacancy, Long> {
 
-    List<Vacancy> findByEmpresaIdEmpresa(Long empresaId);
+    List<Vacancy> findByEmpresaId(Long empresaId);
 
     List<Vacancy> findByEstado(EstadoVacante estado);
 
