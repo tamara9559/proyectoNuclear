@@ -1,7 +1,11 @@
 package com.proyecto.nuclear.service.impl;
 
+import com.proyecto.nuclear.entity.Application;
 import com.proyecto.nuclear.entity.Student;
+import com.proyecto.nuclear.enums.EstadoApplication;
 import com.proyecto.nuclear.enums.EstadoPracticaEstudiante;
+import com.proyecto.nuclear.exception.ResourceNotFoundException;
+import com.proyecto.nuclear.repository.ApplicationRepository;
 import com.proyecto.nuclear.repository.StudentRepository;
 import com.proyecto.nuclear.repository.VacancyRepository;
 import com.proyecto.nuclear.service.SelectionService;
@@ -14,6 +18,7 @@ public class SelectionServiceImpl implements SelectionService {
 
     private final StudentRepository studentRepository;
     private final VacancyRepository vacancyRepository;
+    private final ApplicationRepository applicationRepository;
 
     @Override
     public void sendResumeToCompany(
@@ -88,5 +93,50 @@ public class SelectionServiceImpl implements SelectionService {
         student.setDisponibilidad(status);
 
         studentRepository.save(student);
+    }
+
+    @Override
+    public void acceptApplication(Long applicationId) {
+
+        Application application =
+                applicationRepository.findById(applicationId)
+                        .orElseThrow(() ->
+                                new ResourceNotFoundException(
+                                        "Postulación no encontrada"));
+
+        application.setEstado(
+                EstadoApplication.EN_REVISION);
+
+        applicationRepository.save(application);
+    }
+
+    @Override
+    public void rejectApplication(Long applicationId) {
+
+        Application application =
+                applicationRepository.findById(applicationId)
+                        .orElseThrow(() ->
+                                new ResourceNotFoundException(
+                                        "Postulación no encontrada"));
+
+        application.setEstado(
+                EstadoApplication.RECHAZADO);
+
+        applicationRepository.save(application);
+    }
+
+    @Override
+    public void hireGraduate(Long applicationId) {
+
+        Application application =
+                applicationRepository.findById(applicationId)
+                        .orElseThrow(() ->
+                                new ResourceNotFoundException(
+                                        "Postulación no encontrada"));
+
+        application.setEstado(
+                EstadoApplication.CONTRATADO);
+
+        applicationRepository.save(application);
     }
 }

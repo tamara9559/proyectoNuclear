@@ -1,5 +1,6 @@
 package com.proyecto.nuclear.service;
 
+import com.proyecto.nuclear.entity.Application;
 import com.proyecto.nuclear.entity.Vacancy;
 
 import java.util.List;
@@ -21,4 +22,7 @@ public interface VacancyService {
     void closeVacancy(Long id);
 
     void suspendVacancy(Long id);
+
+    List<Application> getApplications(
+            Long vacancyId);
 }

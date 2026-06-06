@@ -5,7 +5,9 @@ public enum EstadoApplication {
     ENVIADA,
     EN_REVISION,
     PRESELECCIONADO,
+    ENTREVISTA,
     RECHAZADO,
-    ACEPTADO
+    ACEPTADO,
+    CONTRATADO
 
 }

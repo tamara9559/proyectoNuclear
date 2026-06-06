@@ -1,8 +1,10 @@
 package com.proyecto.nuclear.service.impl;
 
+import com.proyecto.nuclear.entity.Application;
 import com.proyecto.nuclear.entity.Vacancy;
 import com.proyecto.nuclear.enums.EstadoVacante;
 import com.proyecto.nuclear.exception.ResourceNotFoundException;
+import com.proyecto.nuclear.repository.ApplicationRepository;
 import com.proyecto.nuclear.repository.VacancyRepository;
 import com.proyecto.nuclear.service.VacancyService;
 import lombok.RequiredArgsConstructor;
@@ -16,6 +18,7 @@ import java.util.List;
 public class VacancyServiceImpl implements VacancyService {
 
     private final VacancyRepository vacancyRepository;
+    private final ApplicationRepository applicationRepository;
 
     @Override
     public Vacancy createVacancy(Vacancy vacancy) {
@@ -70,5 +73,13 @@ public class VacancyServiceImpl implements VacancyService {
         Vacancy vacancy = findById(id);
         vacancy.setEstado(EstadoVacante.SUSPENDIDA);
         vacancyRepository.save(vacancy);
+    }
+
+    @Override
+    public List<Application> getApplications(
+            Long vacancyId) {
+
+        return applicationRepository
+                .findByVacanteId(vacancyId);
     }
 }

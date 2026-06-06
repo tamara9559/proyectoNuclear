@@ -1,7 +1,9 @@
 package com.proyecto.nuclear.service.impl;
 
+import com.proyecto.nuclear.entity.Application;
 import com.proyecto.nuclear.entity.Student;
 import com.proyecto.nuclear.entity.Vacancy;
+import com.proyecto.nuclear.repository.ApplicationRepository;
 import com.proyecto.nuclear.repository.StudentRepository;
 import com.proyecto.nuclear.repository.VacancyRepository;
 import com.proyecto.nuclear.service.MatchingService;
@@ -17,6 +19,7 @@ public class MatchingServiceImpl implements MatchingService {
 
     private final StudentRepository studentRepository;
     private final VacancyRepository vacancyRepository;
+    private final ApplicationRepository applicationRepository;
 
     @Override
     public List<Student> findCompatibleStudents(Long vacancyId) {
@@ -97,5 +100,13 @@ public class MatchingServiceImpl implements MatchingService {
                                                 student,
                                                 vacancy)))
                 .toList();
+    }
+
+    @Override
+    public List<Application> findGraduateApplications(
+            Long vacancyId) {
+
+        return applicationRepository
+                .findByVacanteId(vacancyId);
     }
 }

@@ -1,8 +1,12 @@
 package com.proyecto.nuclear.service.impl;
 
+import com.proyecto.nuclear.entity.Application;
 import com.proyecto.nuclear.entity.Company;
+import com.proyecto.nuclear.entity.Vacancy;
 import com.proyecto.nuclear.exception.ResourceNotFoundException;
+import com.proyecto.nuclear.repository.ApplicationRepository;
 import com.proyecto.nuclear.repository.CompanyRepository;
+import com.proyecto.nuclear.repository.VacancyRepository;
 import com.proyecto.nuclear.service.CompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,6 +19,8 @@ import java.util.List;
 public class CompanyServiceImpl implements CompanyService {
 
     private final CompanyRepository companyRepository;
+    private final ApplicationRepository applicationRepository;
+    private final VacancyRepository vacancyRepository;
 
     @Override
     public Company createCompany(Company company) {
@@ -70,5 +76,20 @@ public class CompanyServiceImpl implements CompanyService {
     @Override
     public List<Company> searchBySector(String sector) {
         return companyRepository.findBySector(sector);
+    }
+
+    @Override
+    public List<Application> getReceivedApplications(
+            Long companyId) {
+
+        List<Vacancy> vacancies =
+                vacancyRepository.findByEmpresaId(companyId);
+
+        return vacancies.stream()
+                .flatMap(v ->
+                        applicationRepository
+                                .findByVacanteId(v.getId())
+                                .stream())
+                .toList();
     }
 }

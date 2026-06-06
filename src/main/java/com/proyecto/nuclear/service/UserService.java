@@ -22,4 +22,6 @@ public interface UserService {
     void deactivateUser(Long id);
 
     void updateLastAccess(Long id);
+
+    boolean isGraduate(Long userId);
 }

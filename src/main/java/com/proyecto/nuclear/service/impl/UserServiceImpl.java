@@ -1,6 +1,7 @@
 package com.proyecto.nuclear.service.impl;
 
 import com.proyecto.nuclear.entity.User;
+import com.proyecto.nuclear.enums.RolUsuario;
 import com.proyecto.nuclear.exception.ResourceNotFoundException;
 import com.proyecto.nuclear.repository.UserRepository;
 import com.proyecto.nuclear.service.UserService;
@@ -78,5 +79,13 @@ public class UserServiceImpl implements UserService {
         User user = findById(id);
         user.setUltimoAcceso(LocalDateTime.now());
         userRepository.save(user);
+    }
+
+    @Override
+    public boolean isGraduate(Long userId) {
+
+        User user = findById(userId);
+
+        return user.getRol() == RolUsuario.EGRESADO;
     }
 }

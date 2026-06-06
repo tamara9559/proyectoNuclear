@@ -22,4 +22,13 @@ public interface SelectionService {
             Long studentId,
             Long vacancyId,
             String status);
+
+    void acceptApplication(
+            Long applicationId);
+
+    void rejectApplication(
+            Long applicationId);
+
+    void hireGraduate(
+            Long applicationId);
 }

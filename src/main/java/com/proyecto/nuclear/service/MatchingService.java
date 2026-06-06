@@ -1,5 +1,6 @@
 package com.proyecto.nuclear.service;
 
+import com.proyecto.nuclear.entity.Application;
 import com.proyecto.nuclear.entity.Student;
 import com.proyecto.nuclear.entity.Vacancy;
 
@@ -16,4 +17,7 @@ public interface MatchingService {
             Vacancy vacancy);
 
     List<Student> rankCandidates(Long vacancyId);
+
+    List<Application> findGraduateApplications(
+            Long vacancyId);
 }
