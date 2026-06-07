@@ -36,6 +36,6 @@ public class Application {
     private LocalDateTime fechaPostulacion;
 
     @Column(name = "comentarios")
-    private String comentarios;
+    private String observaciones;
 
 }
