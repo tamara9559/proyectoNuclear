@@ -1,6 +1,8 @@
 package com.proyecto.nuclear.enums;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 public enum EstadoPracticaEstudiante {
 
     SIN_ASIGNAR,
@@ -8,6 +10,14 @@ public enum EstadoPracticaEstudiante {
     ASIGNADO,
     EN_PRACTICA,
     FINALIZADO,
-    CANCELADO
+    CANCELADO;
+
+    @JsonCreator
+    public static RolUsuario fromValue(
+            String value) {
+
+        return RolUsuario.valueOf(
+                value.toUpperCase());
+    }
 
 }

@@ -1,5 +1,7 @@
 package com.proyecto.nuclear.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 public enum EstadoApplication {
 
     ENVIADA,
@@ -8,6 +10,14 @@ public enum EstadoApplication {
     ENTREVISTA,
     RECHAZADO,
     ACEPTADO,
-    CONTRATADO
+    CONTRATADO;
+
+    @JsonCreator
+    public static RolUsuario fromValue(
+            String value) {
+
+        return RolUsuario.valueOf(
+                value.toUpperCase());
+    }
 
 }

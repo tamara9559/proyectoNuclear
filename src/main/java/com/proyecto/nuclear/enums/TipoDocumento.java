@@ -1,5 +1,7 @@
 package com.proyecto.nuclear.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 public enum TipoDocumento {
 
     HOJA_VIDA,
@@ -9,6 +11,14 @@ public enum TipoDocumento {
     MOVILIDAD,
     CAMARA_COMERCIO,
     CEDULA_REPRESENTANTE,
-    OTRO
+    OTRO;
+
+    @JsonCreator
+    public static RolUsuario fromValue(
+            String value) {
+
+        return RolUsuario.valueOf(
+                value.toUpperCase());
+    }
 
 }

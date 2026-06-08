@@ -1,5 +1,7 @@
 package com.proyecto.nuclear.enums;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+
 public enum RolUsuario {
 
     ESTUDIANTE,
@@ -7,6 +9,13 @@ public enum RolUsuario {
     EMPRESA,
     DOCENTE,
     COORDINADOR,
-    ADMIN
+    ADMIN;
 
+    @JsonCreator
+    public static RolUsuario fromValue(
+            String value) {
+
+        return RolUsuario.valueOf(
+                value.toUpperCase());
+    }
 }

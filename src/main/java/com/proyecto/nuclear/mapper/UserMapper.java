@@ -36,6 +36,7 @@ public class UserMapper {
                 .nombres(dto.getNombres())
                 .apellidos(dto.getApellidos())
                 .correo(dto.getCorreo())
+                .passwordHash(dto.getPassword())
                 .telefono(dto.getTelefono())
                 .rol(dto.getRol())
                 .estado(dto.getEstado())

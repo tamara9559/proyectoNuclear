@@ -20,6 +20,8 @@ public class UserDTO {
 
     private String correo;
 
+    private String password;
+
     private String telefono;
 
     private RolUsuario rol;

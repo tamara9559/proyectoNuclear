@@ -19,7 +19,37 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User createUser(User user) {
-        user.setFechaCreacion(LocalDateTime.now());
+
+        if (user.getNombres() == null
+                || user.getNombres().trim().isEmpty()) {
+
+            throw new RuntimeException(
+                    "El nombre es obligatorio");
+        }
+
+        if (user.getCorreo() == null
+                || user.getCorreo().trim().isEmpty()) {
+
+            throw new RuntimeException(
+                    "El correo es obligatorio");
+        }
+
+        if (user.getPasswordHash() == null
+                || user.getPasswordHash().trim().isEmpty()) {
+
+            throw new RuntimeException(
+                    "La contraseña es obligatoria");
+        }
+
+        if (userRepository.existsByCorreo(
+                user.getCorreo())) {
+
+            throw new RuntimeException(
+                    "correo ya registado");
+        }
+
+        user.setFechaCreacion(
+                LocalDateTime.now());
         user.setEstado(true);
         return userRepository.save(user);
     }
