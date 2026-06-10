@@ -1,1 +1,86 @@
-<p>user-form works!</p>
+<h1>
+
+{{ editing
+? 'Editar Usuario'
+: 'Crear Usuario'
+}}
+
+</h1>
+
+<form
+[formGroup]="form"
+(ngSubmit)="save()"
+>
+
+<input
+type="text"
+placeholder="Nombres"
+formControlName="nombres"
+/>
+
+<input
+type="text"
+placeholder="Apellidos"
+formControlName="apellidos"
+/>
+
+<input
+type="email"
+placeholder="Correo"
+formControlName="correo"
+/>
+
+<input
+type="password"
+placeholder="Password"
+formControlName="password"
+/>
+
+<input
+type="text"
+placeholder="Telefono"
+formControlName="telefono"
+/>
+
+<select
+formControlName="rol"
+>
+
+<option value="">
+Seleccione
+</option>
+
+<option value="ADMIN">
+ADMIN
+</option>
+
+<option value="EMPRESA">
+EMPRESA
+</option>
+
+<option value="ESTUDIANTE">
+ESTUDIANTE
+</option>
+
+</select>
+
+<label>
+
+<input
+type="checkbox"
+formControlName="estado"
+/>
+
+Activo
+
+</label>
+
+<button
+type="submit"
+>
+
+Guardar
+
+</button>
+
+</form>

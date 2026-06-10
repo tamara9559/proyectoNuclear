@@ -1,1 +1,81 @@
-<p>vacancy-list works!</p>
+<h1>
+  Vacantes
+</h1>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Título</th>
+
+<th>Empresa</th>
+
+<th>Ciudad</th>
+
+<th>Carrera</th>
+
+<th>Modalidad</th>
+
+<th>Remuneración</th>
+
+<th>Cupos</th>
+
+<th>Estado</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr
+*ngFor="
+let vacancy
+of vacancies
+">
+
+<td>
+{{ vacancy.id }}
+</td>
+
+<td>
+{{ vacancy.titulo }}
+</td>
+
+<td>
+{{ vacancy.empresaId }}
+</td>
+
+<td>
+{{ vacancy.ciudad }}
+</td>
+
+<td>
+{{ vacancy.carreraRequerida }}
+</td>
+
+<td>
+{{ vacancy.modalidad }}
+</td>
+
+<td>
+{{ vacancy.remuneracion }}
+</td>
+
+<td>
+{{ vacancy.cupos }}
+</td>
+
+<td>
+{{ vacancy.estado }}
+</td>
+
+</tr>
+
+</tbody>
+
+</table>
