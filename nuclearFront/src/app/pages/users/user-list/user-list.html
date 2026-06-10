@@ -1,22 +1,22 @@
 <h1>Usuarios</h1>
 
-@if (loading) {
+<button routerLink="/users/new">
+Crear usuario
+</button>
 
-<p>Cargando...</p>
+<div *ngIf="loading">
 
-}
+Cargando...
 
-@if (error) {
+</div>
 
-<p>
+<div *ngIf="error">
+
 {{ error }}
-</p>
 
-}
+</div>
 
-@if (!loading) {
-
-<table>
+<table *ngIf="!loading">
 
 <thead>
 
@@ -25,7 +25,6 @@
 <th>ID</th>
 <th>Nombre</th>
 <th>Correo</th>
-<th>Teléfono</th>
 <th>Rol</th>
 <th>Estado</th>
 <th>Acciones</th>
@@ -36,81 +35,90 @@
 
 <tbody>
 
-@for (
-user of users;
-track user.id
-) {
-
-<tr>
+<tr
+*ngFor="
+let user
+of users
+"
+>
 
 <td>
+
 {{ user.id }}
+
 </td>
 
 <td>
+
 {{ user.nombres }}
 {{ user.apellidos }}
+
 </td>
 
 <td>
+
 {{ user.correo }}
+
 </td>
 
 <td>
-{{ user.telefono }}
-</td>
 
-<td>
 {{ user.rol }}
-</td>
-
-<td>
-
-@if (user.estado) {
-
-Activo
-
-}
-@else {
-
-Inactivo
-
-}
 
 </td>
 
 <td>
 
-@if (user.estado) {
+{{ user.estado
+? 'Activo'
+: 'Inactivo'
+}}
+
+</td>
+
+<td>
 
 <button
-(click)="deactivate(user.id!)">
+[routerLink]="[
+'/users/edit',
+user.id
+]"
+>
+
+Editar
+
+</button>
+
+<button
+*ngIf="user.estado"
+(click)="
+deactivate(
+user.id!
+)
+"
+>
 
 Desactivar
 
 </button>
 
-}
-
-@else {
-
 <button
-(click)="activate(user.id!)">
+*ngIf="!user.estado"
+(click)="
+activate(
+user.id!
+)
+"
+>
 
 Activar
 
 </button>
 
-}
-
 </td>
 
 </tr>
 
-}
-
 </tbody>
 
 </table>
-
-}
