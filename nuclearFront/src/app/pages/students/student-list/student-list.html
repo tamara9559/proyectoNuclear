@@ -1,0 +1,98 @@
+<h1>Estudiantes</h1>
+
+@if (loading) {
+
+<p>Cargando estudiantes...</p>
+
+}
+
+@else if (error) {
+
+<p>{{ error }}</p>
+
+}
+
+@else {
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Código</th>
+
+<th>Carrera</th>
+
+<th>Semestre</th>
+
+<th>Promedio</th>
+
+<th>Ciudad</th>
+
+<th>Disponibilidad</th>
+
+<th>Competencias</th>
+
+<th>Estado</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+@for (
+student of students;
+track student.id
+) {
+
+<tr>
+
+<td>
+{{ student.id }}
+</td>
+
+<td>
+{{ student.codigoEstudiantil }}
+</td>
+
+<td>
+{{ student.carrera }}
+</td>
+
+<td>
+{{ student.semestre }}
+</td>
+
+<td>
+{{ student.promedio }}
+</td>
+
+<td>
+{{ student.ciudad }}
+</td>
+
+<td>
+{{ student.disponibilidad }}
+</td>
+
+<td>
+{{ student.competencias }}
+</td>
+
+<td>
+{{ student.estadoPractica }}
+</td>
+
+</tr>
+
+}
+
+</tbody>
+
+</table>
+
+}

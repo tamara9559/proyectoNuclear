@@ -1,0 +1,116 @@
+<h1>Usuarios</h1>
+
+@if (loading) {
+
+<p>Cargando...</p>
+
+}
+
+@if (error) {
+
+<p>
+{{ error }}
+</p>
+
+}
+
+@if (!loading) {
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>Nombre</th>
+<th>Correo</th>
+<th>Teléfono</th>
+<th>Rol</th>
+<th>Estado</th>
+<th>Acciones</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+@for (
+user of users;
+track user.id
+) {
+
+<tr>
+
+<td>
+{{ user.id }}
+</td>
+
+<td>
+{{ user.nombres }}
+{{ user.apellidos }}
+</td>
+
+<td>
+{{ user.correo }}
+</td>
+
+<td>
+{{ user.telefono }}
+</td>
+
+<td>
+{{ user.rol }}
+</td>
+
+<td>
+
+@if (user.estado) {
+
+Activo
+
+}
+@else {
+
+Inactivo
+
+}
+
+</td>
+
+<td>
+
+@if (user.estado) {
+
+<button
+(click)="deactivate(user.id!)">
+
+Desactivar
+
+</button>
+
+}
+
+@else {
+
+<button
+(click)="activate(user.id!)">
+
+Activar
+
+</button>
+
+}
+
+</td>
+
+</tr>
+
+}
+
+</tbody>
+
+</table>
+
+}

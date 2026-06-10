@@ -1,0 +1,102 @@
+<h1>Empresas</h1>
+
+@if (loading) {
+
+<p>Cargando...</p>
+
+}
+
+@else if (error) {
+
+<p>{{ error }}</p>
+
+}
+
+@else {
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+<th>Razón Social</th>
+<th>NIT</th>
+<th>Sector</th>
+<th>Ciudad</th>
+<th>Teléfono</th>
+<th>Correo</th>
+<th>Representante</th>
+<th>Estado</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+@for (
+company of companies;
+track company.id
+) {
+
+<tr>
+
+<td>
+{{ company.id }}
+</td>
+
+<td>
+{{ company.razonSocial }}
+</td>
+
+<td>
+{{ company.nit }}
+</td>
+
+<td>
+{{ company.sector }}
+</td>
+
+<td>
+{{ company.ciudad }}
+</td>
+
+<td>
+{{ company.telefono }}
+</td>
+
+<td>
+{{ company.correoContacto }}
+</td>
+
+<td>
+{{ company.representanteLegal }}
+</td>
+
+<td>
+
+@if (company.estado) {
+
+Activo
+
+}
+
+@else {
+
+Inactivo
+
+}
+
+</td>
+
+</tr>
+
+}
+
+</tbody>
+
+</table>
+
+}
