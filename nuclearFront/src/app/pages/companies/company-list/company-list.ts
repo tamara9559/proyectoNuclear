@@ -1,11 +1,17 @@
 import {
 Component,
-OnInit
+OnInit,
+inject
 } from '@angular/core';
 
 import {
 CommonModule
 } from '@angular/common';
+
+import {
+Router,
+RouterModule
+} from '@angular/router';
 
 import {
 Company
@@ -16,31 +22,50 @@ CompanyService
 } from '../../../core/services/company.service';
 
 @Component({
-selector: 'app-company-list',
 
-standalone: true,
+selector:
+'app-company-list',
+
+standalone:
+true,
 
 imports: [
-CommonModule
+
+CommonModule,
+RouterModule
+
 ],
 
-templateUrl: './company-list.html',
+templateUrl:
+'./company-list.html',
 
-styleUrl: './company-list.css'
+styleUrl:
+'./company-list.css'
+
 })
 
 export class CompanyList
 implements OnInit {
 
-companies: Company[] = [];
+private companyService =
+inject(
+CompanyService
+);
 
-loading = true;
+private router =
+inject(
+Router
+);
 
-error = '';
+companies:
+Company[] =
+[];
 
-constructor(
-private companyService: CompanyService
-){}
+loading =
+true;
+
+error =
+'';
 
 ngOnInit(): void {
 
@@ -50,30 +75,60 @@ this.loadCompanies();
 
 loadCompanies(): void {
 
-this.loading = true;
+this.loading =
+true;
 
 this.companyService
 .findAll()
+
 .subscribe({
 
-next: (data) => {
+next:
+(data) => {
 
-this.companies = data;
+this.companies =
+data;
 
-this.loading = false;
+this.loading =
+false;
 
 },
 
-error: () => {
+error:
+() => {
 
 this.error =
 'No fue posible cargar empresas';
 
-this.loading = false;
+this.loading =
+false;
 
 }
 
 });
+
+}
+
+goToCreate(): void {
+
+this.router.navigate([
+
+'/companies/new'
+
+]);
+
+}
+
+goToEdit(
+id: number
+): void {
+
+this.router.navigate([
+
+'/companies/edit',
+id
+
+]);
 
 }
 
