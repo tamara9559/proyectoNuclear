@@ -9,6 +9,11 @@ CommonModule
 } from '@angular/common';
 
 import {
+Router,
+RouterModule
+} from '@angular/router';
+
+import {
 UserService
 } from '../../../core/services/user.service';
 
@@ -17,25 +22,44 @@ User
 } from '../../../core/models/user.model';
 
 @Component({
-selector: 'app-user-list',
 
-standalone: true,
+selector:
+'app-user-list',
+
+standalone:
+true,
 
 imports: [
-CommonModule
+
+CommonModule,
+RouterModule
+
 ],
 
-templateUrl: './user-list.html',
+templateUrl:
+'./user-list.html',
 
-styleUrl: './user-list.css'
+styleUrl:
+'./user-list.css'
+
 })
 
-export class UserList implements OnInit {
+export class UserList
+implements OnInit {
 
 private userService =
-inject(UserService);
+inject(
+UserService
+);
 
-users: User[] = [];
+private router =
+inject(
+Router
+);
+
+users:
+User[] =
+[];
 
 loading =
 true;
@@ -56,11 +80,11 @@ true;
 
 this.userService
 .findAll()
+
 .subscribe({
 
-next: (
-data
-) => {
+next:
+(data) => {
 
 this.users =
 data;
@@ -70,11 +94,12 @@ false;
 
 },
 
-error: (
-err
-) => {
+error:
+(err) => {
 
-console.error(err);
+console.error(
+err
+);
 
 this.error =
 'Error cargando usuarios';
@@ -88,12 +113,36 @@ false;
 
 }
 
+goToCreate(): void {
+
+this.router.navigate([
+
+'/users/new'
+
+]);
+
+}
+
+goToEdit(
+id: number
+): void {
+
+this.router.navigate([
+
+'/users/edit',
+id
+
+]);
+
+}
+
 activate(
 id: number
 ): void {
 
 this.userService
 .activate(id)
+
 .subscribe(() => {
 
 this.loadUsers();
@@ -108,6 +157,7 @@ id: number
 
 this.userService
 .deactivate(id)
+
 .subscribe(() => {
 
 this.loadUsers();

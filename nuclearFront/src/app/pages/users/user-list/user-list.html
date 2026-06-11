@@ -1,32 +1,51 @@
-<h1>Usuarios</h1>
+<h1>
 
-<button routerLink="/users/new">
+Usuarios
+
+</h1>
+
+<button
+(click)="goToCreate()"
+>
+
 Crear usuario
+
 </button>
 
-<div *ngIf="loading">
+<div
+*ngIf="loading"
+>
 
 Cargando...
 
 </div>
 
-<div *ngIf="error">
+<div
+*ngIf="error"
+>
 
 {{ error }}
 
 </div>
 
-<table *ngIf="!loading">
+<table
+*ngIf="!loading"
+>
 
 <thead>
 
 <tr>
 
 <th>ID</th>
+
 <th>Nombre</th>
+
 <th>Correo</th>
+
 <th>Rol</th>
+
 <th>Estado</th>
+
 <th>Acciones</th>
 
 </tr>
@@ -36,10 +55,12 @@ Cargando...
 <tbody>
 
 <tr
+
 *ngFor="
 let user
 of users
 "
+
 >
 
 <td>
@@ -69,9 +90,12 @@ of users
 
 <td>
 
-{{ user.estado
+{{
+
+user.estado
 ? 'Activo'
 : 'Inactivo'
+
 }}
 
 </td>
@@ -79,10 +103,13 @@ of users
 <td>
 
 <button
-[routerLink]="[
-'/users/edit',
-user.id
-]"
+
+(click)="
+goToEdit(
+user.id!
+)
+"
+
 >
 
 Editar
@@ -90,12 +117,19 @@ Editar
 </button>
 
 <button
-*ngIf="user.estado"
+
+*ngIf="
+user.estado
+"
+
 (click)="
+
 deactivate(
 user.id!
 )
+
 "
+
 >
 
 Desactivar
@@ -103,12 +137,19 @@ Desactivar
 </button>
 
 <button
-*ngIf="!user.estado"
+
+*ngIf="
+!user.estado
+"
+
 (click)="
+
 activate(
 user.id!
 )
+
 "
+
 >
 
 Activar
@@ -122,3 +163,4 @@ Activar
 </tbody>
 
 </table>
+

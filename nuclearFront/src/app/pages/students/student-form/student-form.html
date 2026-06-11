@@ -1,1 +1,82 @@
-<p>student-form works!</p>
+<h2>
+
+  {{
+    editing
+      ? 'Editar estudiante'
+      : 'Crear estudiante'
+  }}
+
+</h2>
+
+<form
+[formGroup]="form"
+(ngSubmit)="save()">
+
+<input
+type="number"
+placeholder="Usuario ID"
+formControlName="usuarioId">
+
+<input
+type="text"
+placeholder="Código"
+formControlName="codigoEstudiantil">
+
+<input
+type="text"
+placeholder="Carrera"
+formControlName="carrera">
+
+<input
+type="number"
+placeholder="Semestre"
+formControlName="semestre">
+
+<input
+type="number"
+placeholder="Promedio"
+formControlName="promedio">
+
+<textarea
+placeholder="Perfil"
+formControlName="descripcionPerfil">
+</textarea>
+
+<input
+type="text"
+placeholder="Competencias"
+formControlName="competencias">
+
+<input
+type="text"
+placeholder="Habilidades"
+formControlName="habilidades">
+
+<input
+type="text"
+placeholder="Disponibilidad"
+formControlName="disponibilidad">
+
+<input
+type="text"
+placeholder="Ciudad"
+formControlName="ciudad">
+
+<input
+type="text"
+placeholder="Hoja de vida URL"
+formControlName="hojaVidaUrl">
+
+<input
+type="text"
+placeholder="Estado práctica"
+formControlName="estadoPractica">
+
+<button
+type="submit">
+
+Guardar
+
+</button>
+
+</form>
