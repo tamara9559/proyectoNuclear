@@ -12,6 +12,8 @@ export interface Vacancy {
 
     habilidadesRequeridas: string;
 
+    competenciasRequeridas: string;
+
     carreraRequerida: string;
 
     tipoVacante: string;
