@@ -84,15 +84,22 @@ public class SelectionServiceImpl implements SelectionService {
     public void updateSelectionStatus(
             Long studentId,
             Long vacancyId,
-            String status) {
+            String status
+    ) {
 
         Student student =
-                studentRepository.findById(studentId)
+                studentRepository
+                        .findById(studentId)
                         .orElseThrow();
 
-        student.setDisponibilidad(status);
+        student.setEstadoPractica(
+                EstadoPracticaEstudiante
+                        .valueOf(status)
+        );
 
-        studentRepository.save(student);
+        studentRepository.save(
+                student
+        );
     }
 
     @Override
