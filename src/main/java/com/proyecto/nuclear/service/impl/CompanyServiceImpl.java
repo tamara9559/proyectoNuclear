@@ -30,17 +30,57 @@ public class CompanyServiceImpl implements CompanyService {
     }
 
     @Override
-    public Company updateCompany(Long id, Company company) {
-        Company existing = findById(id);
-
-        existing.setRazonSocial(company.getRazonSocial());
-        existing.setSector(company.getSector());
-        existing.setTelefono(company.getTelefono());
-        existing.setCiudad(company.getCiudad());
-        existing.setDireccion(company.getDireccion());
-
-        return companyRepository.save(existing);
+    public Company updateCompany(
+            Long id,
+            Company company
+    ) {
+        Company existing =
+                findById(id);
+        if (
+                company.getRazonSocial()
+                        != null
+        ) {
+            existing.setRazonSocial(
+                    company.getRazonSocial()
+            );
+        }
+        if (
+                company.getSector()
+                        != null
+        ) {
+            existing.setSector(
+                    company.getSector()
+            );
+        }
+        if (
+                company.getTelefono()
+                        != null
+        ) {
+            existing.setTelefono(
+                    company.getTelefono()
+            );
+        }
+        if (
+                company.getCiudad()
+                        != null
+        ) {
+            existing.setCiudad(
+                    company.getCiudad()
+            );
+        }
+        if (
+                company.getDireccion()
+                        != null
+        ) {
+            existing.setDireccion(
+                    company.getDireccion()
+            );
+        }
+        return companyRepository.save(
+                existing
+        );
     }
+
 
     @Override
     public Company findById(Long id) {

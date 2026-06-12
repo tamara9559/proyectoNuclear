@@ -25,23 +25,33 @@ public class EvaluationServiceImpl implements EvaluationService {
     @Override
     public Evaluation updateEvaluation(
             Long id,
-            Evaluation evaluation) {
-
-        Evaluation existing = findById(id);
-
-        existing.setCalificacion(
-                evaluation.getCalificacion());
-
-        existing.setFortalezas(
-                evaluation.getFortalezas());
-
-        existing.setOportunidadesMejora(
-                evaluation.getOportunidadesMejora());
-
-        existing.setObservaciones(
-                evaluation.getObservaciones());
-
-        return evaluationRepository.save(existing);
+            Evaluation evaluation
+    ) {
+        Evaluation existing =
+                findById(id);
+        if (evaluation.getCalificacion() != null) {
+            existing.setCalificacion(
+                    evaluation.getCalificacion()
+            );
+        }
+        if (evaluation.getFortalezas() != null) {
+            existing.setFortalezas(
+                    evaluation.getFortalezas()
+            );
+        }
+        if (evaluation.getOportunidadesMejora() != null) {
+            existing.setOportunidadesMejora(
+                    evaluation.getOportunidadesMejora()
+            );
+        }
+        if (evaluation.getObservaciones() != null) {
+            existing.setObservaciones(
+                    evaluation.getObservaciones()
+            );
+        }
+        return evaluationRepository.save(
+                existing
+        );
     }
 
     @Override

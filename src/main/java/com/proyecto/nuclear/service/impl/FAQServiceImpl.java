@@ -27,16 +27,32 @@ public class FAQServiceImpl implements FAQService {
     }
 
     @Override
-    public FAQ updateFaq(Long id, FAQ faq) {
-
-        FAQ existing = findById(id);
-
-        existing.setPregunta(faq.getPregunta());
-        existing.setRespuesta(faq.getRespuesta());
-        existing.setCategoria(faq.getCategoria());
-
-        return faqRepository.save(existing);
+    public FAQ updateFaq(
+            Long id,
+            FAQ faq
+    ) {
+        FAQ existing =
+                findById(id);
+        if (faq.getPregunta() != null) {
+            existing.setPregunta(
+                    faq.getPregunta()
+            );
+        }
+        if (faq.getRespuesta() != null) {
+            existing.setRespuesta(
+                    faq.getRespuesta()
+            );
+        }
+        if (faq.getCategoria() != null) {
+            existing.setCategoria(
+                    faq.getCategoria()
+            );
+        }
+        return faqRepository.save(
+                existing
+        );
     }
+
 
     @Override
     public FAQ findById(Long id) {

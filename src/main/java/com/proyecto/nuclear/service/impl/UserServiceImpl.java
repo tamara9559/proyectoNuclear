@@ -55,16 +55,50 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public User updateUser(Long id, User user) {
-        User existing = findById(id);
+    public User updateUser(
+            Long id,
+            User user
+    ) {
+        User existing =
+                findById(id);
+        if (
+                user.getNombres()
+                        != null
+        ) {
+            existing.setNombres(
+                    user.getNombres()
+            );
+        }
+        if (
+                user.getApellidos()
+                        != null
+        ) {
+            existing.setApellidos(
+                    user.getApellidos()
+            );
+        }
+        if (
+                user.getTelefono()
+                        != null
+        ) {
+            existing.setTelefono(
+                    user.getTelefono()
+            );
+        }
+        if (
+                user.getRol()
+                        != null
+        ) {
+            existing.setRol(
+                    user.getRol()
+            );
+        }
+        return userRepository.save(
+                existing
+        );
 
-        existing.setNombres(user.getNombres());
-        existing.setApellidos(user.getApellidos());
-        existing.setTelefono(user.getTelefono());
-        existing.setRol(user.getRol());
-
-        return userRepository.save(existing);
     }
+
 
     @Override
     public User findById(Long id) {

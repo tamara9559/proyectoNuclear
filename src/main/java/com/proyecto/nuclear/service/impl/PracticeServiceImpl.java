@@ -24,19 +24,50 @@ public class PracticeServiceImpl implements PracticeService {
     }
 
     @Override
-    public Practice updatePractice(Long id, Practice practice) {
-
-        Practice existing = findById(id);
-
-        existing.setCiudad(practice.getCiudad());
-        existing.setTutorEmpresarial(practice.getTutorEmpresarial());
-        existing.setCorreoTutor(practice.getCorreoTutor());
-        existing.setTipoContrato(practice.getTipoContrato());
-        existing.setFechaInicio(practice.getFechaInicio());
-        existing.setFechaFin(practice.getFechaFin());
-        existing.setObservaciones(practice.getObservaciones());
-
-        return practiceRepository.save(existing);
+    public Practice updatePractice(
+            Long id,
+            Practice practice
+    ) {
+        Practice existing =
+                findById(id);
+        if (practice.getCiudad() != null) {
+            existing.setCiudad(
+                    practice.getCiudad()
+            );
+        }
+        if (practice.getTutorEmpresarial() != null) {
+            existing.setTutorEmpresarial(
+                    practice.getTutorEmpresarial()
+            );
+        }
+        if (practice.getCorreoTutor() != null) {
+            existing.setCorreoTutor(
+                    practice.getCorreoTutor()
+            );
+        }
+        if (practice.getTipoContrato() != null) {
+            existing.setTipoContrato(
+                    practice.getTipoContrato()
+            );
+        }
+        if (practice.getFechaInicio() != null) {
+            existing.setFechaInicio(
+                    practice.getFechaInicio()
+            );
+        }
+        if (practice.getFechaFin() != null) {
+            existing.setFechaFin(
+                    practice.getFechaFin()
+            );
+        }
+        if (practice.getObservaciones() != null) {
+            existing.setObservaciones(
+                    practice.getObservaciones()
+            );
+        }
+        return practiceRepository.save(
+                existing
+        );
     }
 
     @Override

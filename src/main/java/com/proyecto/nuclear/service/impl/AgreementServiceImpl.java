@@ -21,24 +21,35 @@ public class AgreementServiceImpl implements AgreementService {
     }
 
     @Override
-    public Agreement updateAgreement(Long id,
-                                     Agreement agreement) {
-
-        Agreement existing = findById(id);
-
-        existing.setTipoConvenio(
-                agreement.getTipoConvenio());
-
-        existing.setFechaInicio(
-                agreement.getFechaInicio());
-
-        existing.setFechaFin(
-                agreement.getFechaFin());
-
-        existing.setObservaciones(
-                agreement.getObservaciones());
-
-        return agreementRepository.save(existing);
+    public Agreement updateAgreement(
+            Long id,
+            Agreement agreement
+    ) {
+        Agreement existing =
+                findById(id);
+        if (agreement.getTipoConvenio() != null) {
+            existing.setTipoConvenio(
+                    agreement.getTipoConvenio()
+            );
+        }
+        if (agreement.getFechaInicio() != null) {
+            existing.setFechaInicio(
+                    agreement.getFechaInicio()
+            );
+        }
+        if (agreement.getFechaFin() != null) {
+            existing.setFechaFin(
+                    agreement.getFechaFin()
+            );
+        }
+        if (agreement.getObservaciones() != null) {
+            existing.setObservaciones(
+                    agreement.getObservaciones()
+            );
+        }
+        return agreementRepository.save(
+                existing
+        );
     }
 
     @Override
@@ -96,17 +107,45 @@ public class AgreementServiceImpl implements AgreementService {
     }
 
     @Override
-    public void activateAgreement(Long agreementId) {
+    public void activateAgreement(
+            Long agreementId
+    ) {
 
-        Agreement agreement = findById(agreementId);
+        Agreement agreement =
+                findById(
+                        agreementId
+                );
 
-        if (Boolean.TRUE.equals(agreement.getValidado())
-                && Boolean.TRUE.equals(agreement.getFirmadoEmpresa())
-                && Boolean.TRUE.equals(agreement.getFirmadoUniversidad())) {
+        if (
+                !Boolean.TRUE.equals(
+                        agreement.getValidado()
+                )
+                        ||
+                        !Boolean.TRUE.equals(
+                                agreement.getFirmadoEmpresa()
+                        )
+                        ||
+                        !Boolean.TRUE.equals(
+                                agreement.getFirmadoUniversidad()
+                        )
+                        ||
+                        !Boolean.TRUE.equals(
+                                agreement.getFirmadoEstudiante()
+                        )
+        ) {
 
-            agreement.setEstado("ACTIVO");
+            throw new IllegalStateException(
+                    "El convenio no cumple condiciones para activarse"
+            );
 
-            agreementRepository.save(agreement);
         }
+
+        agreement.setEstado(
+                "ACTIVO"
+        );
+
+        agreementRepository.save(
+                agreement);
+
     }
 }

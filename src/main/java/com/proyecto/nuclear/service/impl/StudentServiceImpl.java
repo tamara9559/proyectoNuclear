@@ -24,19 +24,66 @@ public class StudentServiceImpl implements StudentService {
     }
 
     @Override
-    public Student updateStudent(Long id, Student student) {
-        Student existing = findById(id);
-
-        existing.setCarrera(student.getCarrera());
-        existing.setSemestre(student.getSemestre());
-        existing.setHabilidades(student.getHabilidades());
-        existing.setCompetencias(student.getCompetencias());
-        existing.setDisponibilidad(student.getDisponibilidad());
-        existing.setDescripcionPerfil(student.getDescripcionPerfil());
-
-        existing.setFechaActualizacion(LocalDateTime.now());
-
-        return studentRepository.save(existing);
+    public Student updateStudent(
+            Long id,
+            Student student
+    ) {
+        Student existing =
+                findById(id);
+        if (
+                student.getCarrera()
+                        != null
+        ) {
+            existing.setCarrera(
+                    student.getCarrera()
+            );
+        }
+        if (
+                student.getSemestre()
+                        != null
+        ) {
+            existing.setSemestre(
+                    student.getSemestre()
+            );
+        }
+        if (
+                student.getHabilidades()
+                        != null
+        ) {
+            existing.setHabilidades(
+                    student.getHabilidades()
+            );
+        }
+        if (
+                student.getCompetencias()
+                        != null
+        ) {
+            existing.setCompetencias(
+                    student.getCompetencias()
+            );
+        }
+        if (
+                student.getDisponibilidad()
+                        != null
+        ) {
+            existing.setDisponibilidad(
+                    student.getDisponibilidad()
+            );
+        }
+        if (
+                student.getDescripcionPerfil()
+                        != null
+        ) {
+            existing.setDescripcionPerfil(
+                    student.getDescripcionPerfil()
+            );
+        }
+        existing.setFechaActualizacion(
+                LocalDateTime.now()
+        );
+        return studentRepository.save(
+                existing
+        );
     }
 
     @Override

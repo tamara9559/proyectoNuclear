@@ -26,18 +26,37 @@ public class VacancyServiceImpl implements VacancyService {
         vacancy.setEstado(EstadoVacante.ABIERTA);
         return vacancyRepository.save(vacancy);
     }
-
     @Override
-    public Vacancy updateVacancy(Long id, Vacancy vacancy) {
-        Vacancy existing = findById(id);
-
-        existing.setTitulo(vacancy.getTitulo());
-        existing.setDescripcion(vacancy.getDescripcion());
-        existing.setHabilidadesRequeridas(vacancy.getHabilidadesRequeridas());
-        existing.setModalidad(vacancy.getModalidad());
-        existing.setCiudad(vacancy.getCiudad());
-
-        return vacancyRepository.save(existing);
+    public Vacancy updateVacancy(
+            Long id,
+            Vacancy vacancy
+    ) {
+        Vacancy existing =
+                findById(id);
+        if (vacancy.getTitulo() != null) {
+            existing.setTitulo(vacancy.getTitulo());
+        }
+        if (vacancy.getDescripcion() != null) {
+            existing.setDescripcion(vacancy.getDescripcion());
+        }
+        if (vacancy.getHabilidadesRequeridas() != null) {
+            existing.setHabilidadesRequeridas(
+                    vacancy.getHabilidadesRequeridas()
+            );
+        }
+        if (vacancy.getModalidad() != null) {
+            existing.setModalidad(
+                    vacancy.getModalidad()
+            );
+        }
+        if (vacancy.getCiudad() != null) {
+            existing.setCiudad(
+                    vacancy.getCiudad()
+            );
+        }
+        return vacancyRepository.save(
+                existing
+        );
     }
 
     @Override
