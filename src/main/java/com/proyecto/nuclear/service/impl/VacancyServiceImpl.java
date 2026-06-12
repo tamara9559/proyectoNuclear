@@ -31,29 +31,88 @@ public class VacancyServiceImpl implements VacancyService {
             Long id,
             Vacancy vacancy
     ) {
+
         Vacancy existing =
                 findById(id);
+
         if (vacancy.getTitulo() != null) {
-            existing.setTitulo(vacancy.getTitulo());
+            existing.setTitulo(
+                    vacancy.getTitulo()
+            );
         }
+
         if (vacancy.getDescripcion() != null) {
-            existing.setDescripcion(vacancy.getDescripcion());
+            existing.setDescripcion(
+                    vacancy.getDescripcion()
+            );
         }
+
+        if (vacancy.getPerfilRequerido() != null) {
+            existing.setPerfilRequerido(
+                    vacancy.getPerfilRequerido()
+            );
+        }
+
         if (vacancy.getHabilidadesRequeridas() != null) {
             existing.setHabilidadesRequeridas(
                     vacancy.getHabilidadesRequeridas()
             );
         }
+
+        if (vacancy.getCompetenciasRequeridas() != null) {
+            existing.setCompetenciasRequeridas(
+                    vacancy.getCompetenciasRequeridas()
+            );
+        }
+
+        if (vacancy.getCarreraRequerida() != null) {
+            existing.setCarreraRequerida(
+                    vacancy.getCarreraRequerida()
+            );
+        }
+
+        if (vacancy.getTipoVacante() != null) {
+            existing.setTipoVacante(
+                    vacancy.getTipoVacante()
+            );
+        }
+
         if (vacancy.getModalidad() != null) {
             existing.setModalidad(
                     vacancy.getModalidad()
             );
         }
+
         if (vacancy.getCiudad() != null) {
             existing.setCiudad(
                     vacancy.getCiudad()
             );
         }
+
+        if (vacancy.getRemuneracion() != null) {
+            existing.setRemuneracion(
+                    vacancy.getRemuneracion()
+            );
+        }
+
+        if (vacancy.getCupos() != null) {
+            existing.setCupos(
+                    vacancy.getCupos()
+            );
+        }
+
+        if (vacancy.getEstado() != null) {
+            existing.setEstado(
+                    vacancy.getEstado()
+            );
+        }
+
+        if (vacancy.getFechaCierre() != null) {
+            existing.setFechaCierre(
+                    vacancy.getFechaCierre()
+            );
+        }
+
         return vacancyRepository.save(
                 existing
         );

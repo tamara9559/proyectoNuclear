@@ -1,5 +1,6 @@
 package com.proyecto.nuclear.controller;
 
+import com.proyecto.nuclear.DTO.CandidateMatchDTO;
 import com.proyecto.nuclear.DTO.StudentDTO;
 import com.proyecto.nuclear.DTO.VacancyDTO;
 import com.proyecto.nuclear.mapper.StudentMapper;
@@ -51,6 +52,20 @@ public class MatchingController {
                         .stream()
                         .map(StudentMapper::toDTO)
                         .toList()
+        );
+    }
+
+    @GetMapping("/ranking-score/{vacancyId}")
+    public ResponseEntity<List<CandidateMatchDTO>>
+    rankingWithScore(
+            @PathVariable Long vacancyId
+    ) {
+
+        return ResponseEntity.ok(
+                matchingService
+                        .rankCandidatesWithScore(
+                                vacancyId
+                        )
         );
     }
 }

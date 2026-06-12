@@ -1,5 +1,6 @@
 package com.proyecto.nuclear.service;
 
+import com.proyecto.nuclear.DTO.CandidateMatchDTO;
 import com.proyecto.nuclear.entity.Application;
 import com.proyecto.nuclear.entity.Student;
 import com.proyecto.nuclear.entity.Vacancy;
@@ -20,4 +21,7 @@ public interface MatchingService {
 
     List<Application> findGraduateApplications(
             Long vacancyId);
+    List<CandidateMatchDTO> rankCandidatesWithScore(
+            Long vacancyId
+    );
 }

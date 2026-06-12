@@ -36,6 +36,9 @@ public class Vacancy {
     @Column(name = "habilidades_requeridas")
     private String habilidadesRequeridas;
 
+    @Column(name = "competencias_requeridas")
+    private String competenciasRequeridas;
+
     @Column(name = "carrera_requerida")
     private String carreraRequerida;
 

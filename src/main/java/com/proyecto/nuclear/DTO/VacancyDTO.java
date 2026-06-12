@@ -26,6 +26,8 @@ public class VacancyDTO {
 
     private String habilidadesRequeridas;
 
+    private String competenciasRequeridas;
+
     private String carreraRequerida;
 
     private TipoVacante tipoVacante;
