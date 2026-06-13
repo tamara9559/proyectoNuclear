@@ -165,5 +165,11 @@ this.loadUsers();
 });
 
 }
+goBack(): void {
 
+  this.router.navigate([
+    '/'
+  ]);
+
+}
 }

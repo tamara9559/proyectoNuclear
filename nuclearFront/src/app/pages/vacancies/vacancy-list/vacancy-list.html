@@ -1,6 +1,22 @@
 <h1>
-  Vacantes
+
+Vacantes
+
 </h1>
+
+<button
+(click)="goToCreate()">
+
+Crear vacante
+
+</button>
+
+<button
+(click)="goBack()">
+
+Volver
+
+</button>
 
 <table>
 
@@ -26,6 +42,8 @@
 
 <th>Estado</th>
 
+<th>Acciones</th>
+
 </tr>
 
 </thead>
@@ -39,39 +57,72 @@ of vacancies
 ">
 
 <td>
+
 {{ vacancy.id }}
+
 </td>
 
 <td>
+
 {{ vacancy.titulo }}
+
 </td>
 
 <td>
+
 {{ vacancy.empresaId }}
+
 </td>
 
 <td>
+
 {{ vacancy.ciudad }}
+
 </td>
 
 <td>
+
 {{ vacancy.carreraRequerida }}
+
 </td>
 
 <td>
+
 {{ vacancy.modalidad }}
+
 </td>
 
 <td>
+
 {{ vacancy.remuneracion }}
+
 </td>
 
 <td>
+
 {{ vacancy.cupos }}
+
 </td>
 
 <td>
+
 {{ vacancy.estado }}
+
+</td>
+
+<td>
+
+<button
+(click)="
+goToEdit(
+vacancy.id!
+)
+">
+
+Editar
+
+</button>
+
 </td>
 
 </tr>

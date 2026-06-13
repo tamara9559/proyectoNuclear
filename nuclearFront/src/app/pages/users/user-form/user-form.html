@@ -30,11 +30,15 @@ placeholder="Correo"
 formControlName="correo"
 />
 
+@if(!editing){
+
 <input
 type="password"
 placeholder="Password"
 formControlName="password"
 />
+
+}
 
 <input
 type="text"
@@ -75,12 +79,30 @@ Activo
 
 </label>
 
+<div>
+
 <button
 type="submit"
 >
 
+@if(editing){
+Actualizar
+}
+@else{
 Guardar
+}
 
 </button>
+
+<button
+type="button"
+(click)="cancel()"
+>
+
+Cancelar
+
+</button>
+
+</div>
 
 </form>

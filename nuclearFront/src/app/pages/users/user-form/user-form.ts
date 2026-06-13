@@ -200,4 +200,12 @@ export class UserForm implements OnInit {
 
   }
 
+  cancel(): void {
+
+  this.router.navigate([
+    '/users'
+  ]);
+
+}
+
 }

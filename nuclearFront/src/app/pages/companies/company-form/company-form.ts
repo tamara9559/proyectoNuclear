@@ -232,4 +232,12 @@ implements OnInit {
 
   }
 
+  cancel(): void {
+
+  this.router.navigate([
+    '/companies'
+  ]);
+
+}
+
 }

@@ -16,6 +16,10 @@ import {
   VacancyService
 } from '../../../core/services/vacancy.service';
 
+import {
+Router
+} from '@angular/router';
+
 @Component({
   selector: 'app-vacancy-list',
   standalone: true,
@@ -65,5 +69,43 @@ implements OnInit {
       });
 
   }
+
+  private router =
+inject(
+Router
+);
+
+goToCreate(): void {
+
+this.router.navigate([
+
+'/vacancies/new'
+
+]);
+
+}
+
+goToEdit(
+id: number
+): void {
+
+this.router.navigate([
+
+'/vacancies/edit',
+id
+
+]);
+
+}
+
+goBack(): void {
+
+this.router.navigate([
+
+'/'
+
+]);
+
+}
 
 }
