@@ -16,6 +16,10 @@ import {
 Student
 } from '../../../core/models/student.model';
 
+import {
+Router
+} from '@angular/router';
+
 @Component({
 
 selector:
@@ -89,6 +93,34 @@ false;
 }
 
 });
+
+}
+
+private router =
+inject(
+Router
+);
+
+goToCreate(): void {
+
+this.router.navigate([
+
+'/students/new'
+
+]);
+
+}
+
+goToEdit(
+id: number
+): void {
+
+this.router.navigate([
+
+'/students/edit',
+id
+
+]);
 
 }
 

@@ -1,4 +1,3 @@
-```html
 <h2>
 
 {{
@@ -37,6 +36,15 @@ formControlName="perfilRequerido">
 type="text"
 placeholder="Habilidades"
 formControlName="habilidadesRequeridas">
+
+<label>
+Competencias requeridas
+</label>
+
+<input
+type="text"
+formControlName="competenciasRequeridas"
+/>
 
 <input
 type="text"
@@ -77,12 +85,29 @@ formControlName="estado">
 type="date"
 formControlName="fechaCierre">
 
+<div>
+
 <button
 type="submit">
 
+@if(editing){
+Actualizar
+}
+@else{
 Guardar
+}
 
 </button>
 
+<button
+type="button"
+(click)="cancel()">
+
+Cancelar
+
+</button>
+
+</div>
+
 </form>
-```
+

@@ -75,7 +75,19 @@ formControlName="estadoPractica">
 <button
 type="submit">
 
-Guardar
+{{
+editing
+? 'Actualizar'
+: 'Guardar'
+}}
+
+</button>
+
+<button
+type="button"
+(click)="cancel()">
+
+Cancelar
 
 </button>
 

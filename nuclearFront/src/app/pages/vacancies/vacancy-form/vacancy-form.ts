@@ -103,7 +103,9 @@ perfilRequerido: [
 habilidadesRequeridas: [
 ''
 ],
-
+competenciasRequeridas: [
+''
+],
 carreraRequerida: [
 ''
 ],
@@ -195,6 +197,9 @@ vacancy.perfilRequerido,
 habilidadesRequeridas:
 vacancy.habilidadesRequeridas,
 
+competenciasRequeridas:
+vacancy.competenciasRequeridas,
+
 carreraRequerida:
 vacancy.carreraRequerida,
 
@@ -226,7 +231,6 @@ vacancy.fechaCierre
 );
 
 }
-
 save(): void {
 
 if (
@@ -259,6 +263,9 @@ this.form.value.perfilRequerido!,
 
 habilidadesRequeridas:
 this.form.value.habilidadesRequeridas!,
+
+competenciasRequeridas:
+this.form.value.competenciasRequeridas!,
 
 carreraRequerida:
 this.form.value.carreraRequerida!,
@@ -335,5 +342,13 @@ this.router.navigate([
 }
 
 }
+
+cancel(): void {
+
+this.router.navigate([
+'/vacancies'
+]);
+
+}  
 
 }

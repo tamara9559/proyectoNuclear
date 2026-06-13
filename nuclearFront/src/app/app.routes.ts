@@ -16,16 +16,80 @@ import { VacancyForm } from './pages/vacancies/vacancy-form/vacancy-form';
 
 import { NotFound } from './pages/not-found/not-found';
 
+import {
+Layout
+} from './shared/layout/layout/layout';
+
 export const routes: Routes = [
 
 {
-path: '',
-component: Dashboard
+
+path:
+'',
+
+component:
+Layout,
+
+children: [
+
+{
+path:
+'users',
+loadComponent:
+() =>
+import(
+'./pages/users/user-list/user-list'
+)
+.then(
+m =>
+m.UserList
+)
 },
 
 {
-path: 'users',
-component: UserList
+path:
+'companies',
+loadComponent:
+() =>
+import(
+'./pages/companies/company-list/company-list'
+)
+.then(
+m =>
+m.CompanyList
+)
+},
+
+{
+path:
+'students',
+loadComponent:
+() =>
+import(
+'./pages/students/student-list/student-list'
+)
+.then(
+m =>
+m.StudentList
+)
+},
+
+{
+path:
+'vacancies',
+loadComponent:
+() =>
+import(
+'./pages/vacancies/vacancy-list/vacancy-list'
+)
+.then(
+m =>
+m.VacancyList
+)
+}
+
+]
+
 },
 
 {
@@ -61,6 +125,34 @@ component: VacancyList
 {
 path: 'vacancies/new',
 component: VacancyForm
+},
+
+{
+path:
+'users/edit/:id',
+component:
+UserForm
+},
+
+{
+path:
+'students/edit/:id',
+component:
+StudentForm
+},
+
+{
+path:
+'companies/edit/:id',
+component:
+CompanyForm
+},
+
+{
+path:
+'vacancies/edit/:id',
+component:
+VacancyForm
 },
 
 {

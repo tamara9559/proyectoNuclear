@@ -1,14 +1,33 @@
-<h1>Estudiantes</h1>
+<h1>
+
+Estudiantes
+
+</h1>
+
+<button
+(click)="goToCreate()">
+
+Crear estudiante
+
+</button>
 
 @if (loading) {
 
-<p>Cargando estudiantes...</p>
+<p>
+
+Cargando estudiantes...
+
+</p>
 
 }
 
 @else if (error) {
 
-<p>{{ error }}</p>
+<p>
+
+{{ error }}
+
+</p>
 
 }
 
@@ -38,6 +57,8 @@
 
 <th>Estado</th>
 
+<th>Acciones</th>
+
 </tr>
 
 </thead>
@@ -52,39 +73,72 @@ track student.id
 <tr>
 
 <td>
+
 {{ student.id }}
+
 </td>
 
 <td>
+
 {{ student.codigoEstudiantil }}
+
 </td>
 
 <td>
+
 {{ student.carrera }}
+
 </td>
 
 <td>
+
 {{ student.semestre }}
+
 </td>
 
 <td>
+
 {{ student.promedio }}
+
 </td>
 
 <td>
+
 {{ student.ciudad }}
+
 </td>
 
 <td>
+
 {{ student.disponibilidad }}
+
 </td>
 
 <td>
+
 {{ student.competencias }}
+
 </td>
 
 <td>
+
 {{ student.estadoPractica }}
+
+</td>
+
+<td>
+
+<button
+(click)="
+goToEdit(
+student.id!
+)
+">
+
+Editar
+
+</button>
+
 </td>
 
 </tr>

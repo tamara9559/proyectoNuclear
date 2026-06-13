@@ -248,4 +248,12 @@ implements OnInit {
 
   }
 
+  cancel(): void {
+
+  this.router.navigate([
+    '/students'
+  ]);
+
+ } 
+
 }
