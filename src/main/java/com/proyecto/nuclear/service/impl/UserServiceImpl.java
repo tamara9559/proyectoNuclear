@@ -6,6 +6,7 @@ import com.proyecto.nuclear.exception.ResourceNotFoundException;
 import com.proyecto.nuclear.repository.UserRepository;
 import com.proyecto.nuclear.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -48,8 +49,18 @@ public class UserServiceImpl implements UserService {
                     "correo ya registado");
         }
 
+        BCryptPasswordEncoder encoder =
+                new BCryptPasswordEncoder();
+
+        user.setPasswordHash(
+                encoder.encode(
+                        user.getPasswordHash()
+                )
+        );
+
         user.setFechaCreacion(
-                LocalDateTime.now());
+                LocalDateTime.now()
+        );
         user.setEstado(true);
         return userRepository.save(user);
     }
