@@ -1,0 +1,85 @@
+<h1>
+
+Documentos
+
+</h1>
+
+<button
+(click)="create()">
+
+Nuevo documento
+
+</button>
+
+<hr>
+
+<table>
+
+<tr>
+
+<th>
+ID
+</th>
+
+<th>
+Nombre
+</th>
+
+<th>
+Tipo
+</th>
+
+<th>
+Estado
+</th>
+
+<th>
+Acciones
+</th>
+
+</tr>
+
+<tr
+*ngFor="
+let d
+of documents
+">
+
+<td>
+
+{{ d.id }}
+
+</td>
+
+<td>
+
+{{ d.nombre }}
+
+</td>
+
+<td>
+
+{{ d.tipoDocumento }}
+
+</td>
+
+<td>
+
+{{ d.estado }}
+
+</td>
+
+<td>
+
+<button
+(click)="remove(d.id)">
+
+Eliminar
+
+</button>
+
+</td>
+
+</tr>
+
+</table>

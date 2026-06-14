@@ -1,0 +1,90 @@
+<h1>
+
+Preguntas frecuentes
+
+</h1>
+
+<button
+(click)="newFaq()">
+
+Nueva FAQ
+
+</button>
+
+<hr>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Pregunta</th>
+
+<th>Categoría</th>
+
+<th>Estado</th>
+
+<th>Acciones</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr
+*ngFor="
+let faq
+of faqs
+">
+
+<td>
+{{ faq.id }}
+</td>
+
+<td>
+{{ faq.pregunta }}
+</td>
+
+<td>
+{{ faq.categoria }}
+</td>
+
+<td>
+
+{{ faq.estado
+? 'Activa'
+: 'Inactiva'
+}}
+
+</td>
+
+<td>
+
+<button
+(click)="edit(faq.id)">
+
+Editar
+
+</button>
+
+<button
+(click)="toggle(faq)">
+
+{{ faq.estado
+? 'Desactivar'
+: 'Activar'
+}}
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>

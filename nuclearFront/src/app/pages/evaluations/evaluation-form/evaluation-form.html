@@ -1,0 +1,79 @@
+<h2>
+
+{{
+editing
+?
+'Editar evaluación'
+:
+'Crear evaluación'
+}}
+
+</h2>
+
+<form
+[formGroup]="form"
+(ngSubmit)="save()">
+
+<input
+type="number"
+placeholder="Práctica ID"
+formControlName="practicaId">
+
+<select
+formControlName="evaluador">
+
+<option value="">
+Seleccione
+</option>
+
+<option value="EMPRESA">
+EMPRESA
+</option>
+
+<option value="UNIVERSIDAD">
+UNIVERSIDAD
+</option>
+
+<option value="ESTUDIANTE">
+ESTUDIANTE
+</option>
+
+</select>
+
+<input
+type="number"
+step="0.1"
+placeholder="Calificación"
+formControlName="calificacion">
+
+<textarea
+placeholder="Fortalezas"
+formControlName="fortalezas">
+</textarea>
+
+<textarea
+placeholder="Oportunidades"
+formControlName="oportunidadesMejora">
+</textarea>
+
+<textarea
+placeholder="Observaciones"
+formControlName="observaciones">
+</textarea>
+
+<button
+type="submit">
+
+Guardar
+
+</button>
+
+<button
+type="button"
+(click)="cancel()">
+
+Cancelar
+
+</button>
+
+</form>

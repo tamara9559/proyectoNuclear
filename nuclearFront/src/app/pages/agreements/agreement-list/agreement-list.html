@@ -1,0 +1,122 @@
+<h1>
+
+Convenios
+
+</h1>
+
+<button
+(click)="goToCreate()">
+
+Crear convenio
+
+</button>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Empresa</th>
+
+<th>Tipo</th>
+
+<th>Inicio</th>
+
+<th>Fin</th>
+
+<th>Estado</th>
+
+<th>Validado</th>
+
+<th>Acciones</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+@for (
+agreement of agreements;
+track agreement.id
+) {
+
+<tr>
+
+<td>
+{{ agreement.id }}
+</td>
+
+<td>
+{{ agreement.empresaId }}
+</td>
+
+<td>
+{{ agreement.tipoConvenio }}
+</td>
+
+<td>
+{{ agreement.fechaInicio }}
+</td>
+
+<td>
+{{ agreement.fechaFin }}
+</td>
+
+<td>
+{{ agreement.estado }}
+</td>
+
+<td>
+
+{{
+agreement.validado
+?
+'SI'
+:
+'NO'
+}}
+
+</td>
+
+<td>
+
+<button
+(click)="goToEdit(
+agreement.id!
+)">
+
+Editar
+
+</button>
+
+<button
+(click)="validate(
+agreement.id!
+)">
+
+Validar
+
+</button>
+
+<button
+(click)="activate(
+agreement.id!
+)">
+
+Activar
+
+</button>
+
+</td>
+
+</tr>
+
+}
+
+</tbody>
+
+</table>

@@ -1,0 +1,67 @@
+<h2>
+
+{{
+editing
+?
+'Editar convenio'
+:
+'Crear convenio'
+}}
+
+</h2>
+
+<form
+[formGroup]="form"
+(ngSubmit)="save()">
+
+<input
+type="number"
+placeholder="Empresa ID"
+formControlName="empresaId">
+
+<select
+formControlName="tipoConvenio">
+
+<option value="">
+Seleccione
+</option>
+
+<option value="PRACTICA">
+PRACTICA
+</option>
+
+<option value="PASANTIA">
+PASANTIA
+</option>
+
+</select>
+
+<input
+type="date"
+formControlName="fechaInicio">
+
+<input
+type="date"
+formControlName="fechaFin">
+
+<textarea
+placeholder="Observaciones"
+formControlName="observaciones">
+</textarea>
+
+<button
+type="submit">
+
+Guardar
+
+</button>
+
+<button
+type="button"
+(click)="cancel()">
+
+Cancelar
+
+</button>
+
+</form>

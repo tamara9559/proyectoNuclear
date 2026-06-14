@@ -1,0 +1,88 @@
+<h1>
+
+Prácticas
+
+</h1>
+
+<button
+(click)="goToCreate()"
+>
+
+Crear práctica
+
+</button>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Estudiante</th>
+
+<th>Empresa</th>
+
+<th>Vacante</th>
+
+<th>Estado</th>
+
+<th>Ciudad</th>
+
+<th>Acciones</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+<tr
+*ngFor="
+let p
+of practices
+"
+>
+
+<td>
+{{ p.id }}
+</td>
+
+<td>
+{{ p.estudianteId }}
+</td>
+
+<td>
+{{ p.empresaId }}
+</td>
+
+<td>
+{{ p.vacanteId }}
+</td>
+
+<td>
+{{ p.estado }}
+</td>
+
+<td>
+{{ p.ciudad }}
+</td>
+
+<td>
+
+<button
+(click)="goToEdit(p.id!)"
+>
+
+Editar
+
+</button>
+
+</td>
+
+</tr>
+
+</tbody>
+
+</table>

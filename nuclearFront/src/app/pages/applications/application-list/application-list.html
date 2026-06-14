@@ -1,0 +1,75 @@
+<h1>
+
+Postulaciones
+
+</h1>
+
+<button
+(click)="goToCreate()">
+
+Nueva postulación
+
+</button>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Usuario</th>
+
+<th>Vacante</th>
+
+<th>Estado</th>
+
+<th>Fecha</th>
+
+<th>Observaciones</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+@for (
+app of applications;
+track app.id
+) {
+
+<tr>
+
+<td>
+{{ app.id }}
+</td>
+
+<td>
+{{ app.usuarioId }}
+</td>
+
+<td>
+{{ app.vacanteId }}
+</td>
+
+<td>
+{{ app.estado }}
+</td>
+
+<td>
+{{ app.fechaPostulacion }}
+</td>
+
+<td>
+{{ app.observaciones }}
+</td>
+
+</tr>
+
+}
+
+</tbody>
+
+</table>

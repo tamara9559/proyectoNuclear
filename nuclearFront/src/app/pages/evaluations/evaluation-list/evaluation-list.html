@@ -1,0 +1,98 @@
+<h1>
+
+Evaluaciones
+
+</h1>
+
+<button
+(click)="goToCreate()">
+
+Nueva evaluación
+
+</button>
+
+<button
+(click)="load()">
+
+Consultar
+
+</button>
+
+<p>
+
+Promedio:
+{{ average }}
+
+</p>
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>ID</th>
+
+<th>Práctica</th>
+
+<th>Evaluador</th>
+
+<th>Calificación</th>
+
+<th>Fecha</th>
+
+<th>Acciones</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+@for (
+evaluation of evaluations;
+track evaluation.id
+) {
+
+<tr>
+
+<td>
+{{ evaluation.id }}
+</td>
+
+<td>
+{{ evaluation.practicaId }}
+</td>
+
+<td>
+{{ evaluation.evaluador }}
+</td>
+
+<td>
+{{ evaluation.calificacion }}
+</td>
+
+<td>
+{{ evaluation.fechaEvaluacion }}
+</td>
+
+<td>
+
+<button
+(click)="goToEdit(
+evaluation.id!
+)">
+
+Editar
+
+</button>
+
+</td>
+
+</tr>
+
+}
+
+</tbody>
+
+</table>
