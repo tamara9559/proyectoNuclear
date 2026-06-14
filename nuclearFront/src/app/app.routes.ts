@@ -14,7 +14,7 @@ import { CompanyForm } from './pages/companies/company-form/company-form';
 import { VacancyList } from './pages/vacancies/vacancy-list/vacancy-list';
 import { VacancyForm } from './pages/vacancies/vacancy-form/vacancy-form';
 
-import { NotFound } from './pages/not-found/not-found';
+import { NotFound } from './pages/errors/not-found/not-found';
 
 import {
 Layout
@@ -77,6 +77,31 @@ import {
 FaqForm
 }
 from './pages/faqs/faq-form/faq-form';
+
+import {
+MonitoringList
+}
+from './pages/monitorings/monitoring-list/monitoring-list';
+
+import {
+MonitoringForm
+}
+from './pages/monitorings/monitoring-form/monitoring-form';
+
+import {
+authGuard
+}
+from './core/guards/auth.guard';
+
+import {
+guestGuard
+}
+from './core/guards/guest.guard';
+
+import {
+Login
+}
+from './pages/login/login';
 
 export const routes: Routes = [
 
@@ -291,14 +316,73 @@ component:
 FaqForm
 },
 
-]
+{
+path:
+'monitorings',
 
+component:
+MonitoringList
+},
+
+{
+path:
+'monitorings/new',
+
+component:
+MonitoringForm
+},
+
+{
+path:
+'**',
+
+loadComponent:
+() =>
+
+import(
+'./pages/errors/not-found/not-found'
+)
+
+.then(
+m =>
+m.NotFound
+)
 
 },
 
 {
-path: '**',
-component: NotFound
+
+path:
+'dashboard',
+
+component:
+Dashboard,
+
+canActivate:
+[
+authGuard
+]
+
+},
+
+{
+
+path:
+'login',
+
+component:
+Login,
+
+canActivate:
+[
+guestGuard
+]
+
 }
+
+]
+
+},
+
 
 ];
