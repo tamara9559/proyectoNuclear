@@ -6,6 +6,11 @@ import {
 RouterModule
 } from '@angular/router';
 
+import {
+RouterLink,
+RouterOutlet
+} from '@angular/router';
+
 @Component({
 
 selector:
@@ -16,6 +21,7 @@ true,
 
 imports: [
 RouterModule,
+RouterOutlet
 
 ],
 

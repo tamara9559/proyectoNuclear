@@ -20,80 +20,37 @@ import {
 Layout
 } from './shared/layout/layout/layout';
 
+import { Ranking } from './pages/matching/ranking/ranking';
+
+import { SelectionActions } from './pages/selections/selection-actions';
+
 export const routes: Routes = [
 
 {
 
-path:
-'',
+path: '',
 
-component:
-Layout,
+component: Layout,
 
 children: [
 
 {
-path:
-'users',
-loadComponent:
-() =>
-import(
-'./pages/users/user-list/user-list'
-)
-.then(
-m =>
-m.UserList
-)
+path: '',
+component: Dashboard
 },
 
 {
-path:
-'companies',
-loadComponent:
-() =>
-import(
-'./pages/companies/company-list/company-list'
-)
-.then(
-m =>
-m.CompanyList
-)
-},
-
-{
-path:
-'students',
-loadComponent:
-() =>
-import(
-'./pages/students/student-list/student-list'
-)
-.then(
-m =>
-m.StudentList
-)
-},
-
-{
-path:
-'vacancies',
-loadComponent:
-() =>
-import(
-'./pages/vacancies/vacancy-list/vacancy-list'
-)
-.then(
-m =>
-m.VacancyList
-)
-}
-
-]
-
+path: 'users',
+component: UserList
 },
 
 {
 path: 'users/new',
+component: UserForm
+},
+
+{
+path: 'users/edit/:id',
 component: UserForm
 },
 
@@ -108,12 +65,22 @@ component: StudentForm
 },
 
 {
+path: 'students/edit/:id',
+component: StudentForm
+},
+
+{
 path: 'companies',
 component: CompanyList
 },
 
 {
 path: 'companies/new',
+component: CompanyForm
+},
+
+{
+path: 'companies/edit/:id',
 component: CompanyForm
 },
 
@@ -128,31 +95,29 @@ component: VacancyForm
 },
 
 {
-path:
-'users/edit/:id',
-component:
-UserForm
+path: 'vacancies/edit/:id',
+component: VacancyForm
 },
 
 {
 path:
-'students/edit/:id',
+'matching',
+
 component:
-StudentForm
+Ranking
 },
 
 {
 path:
-'companies/edit/:id',
-component:
-CompanyForm
-},
+'selection',
 
-{
-path:
-'vacancies/edit/:id',
 component:
-VacancyForm
+SelectionActions
+}
+
+]
+
+
 },
 
 {

@@ -1,0 +1,54 @@
+<h1>
+
+Ranking candidatos
+
+</h1>
+
+<table>
+
+<tr>
+
+<th>
+Nombre
+</th>
+
+<th>
+Carrera
+</th>
+
+<th>
+Compatibilidad
+</th>
+
+</tr>
+
+@for(
+candidate of ranking;
+track candidate.studentId
+){
+
+<tr>
+
+<td>
+
+{{ candidate.nombre }}
+
+</td>
+
+<td>
+
+{{ candidate.carrera }}
+
+</td>
+
+<td>
+
+{{ candidate.compatibility }} %
+
+</td>
+
+</tr>
+
+}
+
+</table>
