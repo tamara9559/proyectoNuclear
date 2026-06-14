@@ -24,6 +24,60 @@ import { Ranking } from './pages/matching/ranking/ranking';
 
 import { SelectionActions } from './pages/selections/selection-actions';
 
+import { ApplicationList }
+from './pages/applications/application-list/application-list';
+
+import { ApplicationForm }
+from './pages/applications/application-form/application-form';
+
+import { AgreementList }
+from './pages/agreements/agreement-list/agreement-list';
+
+import { AgreementForm }
+from './pages/agreements/agreement-form/agreement-form';
+
+import {
+EvaluationList
+}
+from
+'./pages/evaluations/evaluation-list/evaluation-list';
+
+import {
+EvaluationForm
+}
+from
+'./pages/evaluations/evaluation-form/evaluation-form';
+
+import {
+PracticeList
+} from './pages/practices/practice-list/practice-list';
+
+import {
+PracticeForm
+} from './pages/practices/practice-form/practice-form';
+
+import {
+DocumentList
+}
+from
+'./pages/documents/document-list/document-list';
+
+import {
+DocumentForm
+}
+from
+'./pages/documents/document-form/document-form';
+
+import {
+FaqList
+}
+from './pages/faqs/faq-list/faq-list';
+
+import {
+FaqForm
+}
+from './pages/faqs/faq-form/faq-form';
+
 export const routes: Routes = [
 
 {
@@ -113,7 +167,129 @@ path:
 
 component:
 SelectionActions
-}
+},
+
+{
+path:
+'applications',
+
+component:
+ApplicationList
+},
+
+{
+path:
+'applications/new',
+
+component:
+ApplicationForm
+},
+
+{
+path:
+'agreements',
+
+component:
+AgreementList
+},
+
+{
+path:
+'agreements/new',
+
+component:
+AgreementForm
+},
+
+{
+path:
+'agreements/edit/:id',
+
+component:
+AgreementForm
+},
+
+{
+path:
+'evaluations',
+component:
+EvaluationList
+},
+
+{
+path:
+'evaluations/new',
+component:
+EvaluationForm
+},
+
+{
+path:
+'evaluations/edit/:id',
+component:
+EvaluationForm
+},
+
+{
+path:
+'practices',
+component:
+PracticeList
+},
+
+{
+path:
+'practices/new',
+component:
+PracticeForm
+},
+
+{
+path:
+'practices/edit/:id',
+component:
+PracticeForm
+},
+
+{
+path:
+'documents',
+
+component:
+DocumentList
+},
+
+{
+path:
+'documents/new',
+
+component:
+DocumentForm
+},
+
+{
+path:
+'faqs',
+
+component:
+FaqList
+},
+
+{
+path:
+'faqs/new',
+
+component:
+FaqForm
+},
+
+{
+path:
+'faqs/edit/:id',
+
+component:
+FaqForm
+},
 
 ]
 

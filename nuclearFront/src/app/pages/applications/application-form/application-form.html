@@ -1,0 +1,36 @@
+<h2>
+
+Nueva postulación
+
+</h2>
+
+<form
+[formGroup]="form"
+(ngSubmit)="save()">
+
+<input
+type="number"
+placeholder="Usuario ID"
+formControlName="usuarioId">
+
+<input
+type="number"
+placeholder="Vacante ID"
+formControlName="vacanteId">
+
+<button
+type="submit">
+
+Postular
+
+</button>
+
+<button
+type="button"
+(click)="cancel()">
+
+Cancelar
+
+</button>
+
+</form>
