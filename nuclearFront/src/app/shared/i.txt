@@ -1,0 +1,115 @@
+Paso 1
+
+Proteger backend por rol
+
+Ejemplo:
+
+ADMIN → /users/**
+COORDINADOR → /monitorings/**
+ESTUDIANTE → /vacancies/**
+Paso 2
+
+Página principal por rol
+
+Ejemplo:
+
+/dashboard
+
+muestre cosas distintas.
+
+Paso 3
+
+Integrar formularios con backend
+
+Probar:
+
+crear
+editar
+listar
+eliminar
+Paso 4
+
+Estados visuales
+
+loader
+errores
+vacío
+Paso 5
+
+Pruebas completas
+
+Frontend ↔ Backend
+
+Diría que estás aproximadamente en:
+
+80–85% terminado
+
+antes de pruebas reales.
+
+3. Como es tipo LinkedIn… ¿cómo verán vacantes?
+
+Muy buena observación.
+
+Ahora mismo tu estructura parece administrativa.
+
+Para un sistema tipo LinkedIn normalmente aparece una pantalla principal.
+
+Ejemplo:
+
+Dashboard
+│
+├── Inicio
+├── Vacantes
+├── Mis postulaciones
+├── Empresas
+├── Perfil
+
+Entonces:
+
+ESTUDIANTE / EGRESADO
+
+Entran y ven:
+
+Vacantes recomendadas
+EMPRESA
+
+Entra y ve:
+
+Mis vacantes publicadas
+COORDINADOR
+
+Ve:
+
+Seguimiento
+Estudiantes
+Reportes
+
+Tu flujo probablemente debería quedar:
+
+LOGIN
+
+↓
+
+DASHBOARD
+
+↓
+
+según rol
+
+ESTUDIANTE
+→ Vacantes
+→ Aplicaciones
+
+EGRESADO
+→ Vacantes
+
+EMPRESA
+→ Crear vacantes
+
+COORDINADOR
+→ Seguimiento
+
+ADMIN
+→ Todo
+
+Entonces sí: te falta crear una pantalla Inicio/Home/Dashboard real donde aparezca contenido según el rol.
