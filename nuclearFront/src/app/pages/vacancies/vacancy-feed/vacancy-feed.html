@@ -1,0 +1,47 @@
+<h1>
+
+Vacantes disponibles
+
+</h1>
+
+<div class="grid">
+
+@for(
+vacancy of vacancies;
+track vacancy.id
+){
+
+<div
+class="card"
+(click)="open(vacancy.id)"
+>
+
+<h2>
+
+{{ vacancy.titulo }}
+
+</h2>
+
+<p>
+
+{{ vacancy.descripcion }}
+
+</p>
+
+<p>
+
+📍 {{ vacancy.ciudad }}
+
+</p>
+
+<p>
+
+💵 {{ vacancy.remuneracion }}
+
+</p>
+
+</div>
+
+}
+
+</div>

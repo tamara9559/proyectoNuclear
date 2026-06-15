@@ -1,115 +1,105 @@
 import {
-HttpErrorResponse,
+
 HttpInterceptorFn
+
 }
-from '@angular/common/http';
+
+from
+'@angular/common/http';
 
 import {
-catchError
-} from 'rxjs/operators';
 
-import {
-throwError
-} from 'rxjs';
-
-import {
 inject
+
 }
-from '@angular/core';
+
+from
+'@angular/core';
 
 import {
-NotificationService
+
+Router
+
 }
-from '../services/notification.service';
+
+from
+'@angular/router';
+
+import {
+
+catchError
+
+}
+
+from
+'rxjs';
+
+import {
+
+throwError
+
+}
+
+from
+'rxjs';
 
 export const errorInterceptor:
-HttpInterceptorFn = (
+
+HttpInterceptorFn=(
 
 req,
 next
 
-) => {
+)=>{
+
+const router=
+
+inject(
+Router
+);
 
 return next(
+
 req
-).pipe(
+
+)
+
+.pipe(
 
 catchError(
 
-(
-error:
-HttpErrorResponse
-) => {
+err=>{
 
-let message =
-'Error inesperado';
+if(
+err.status===401
+){
 
-if (
-error.status === 0
-) {
+router.navigate(
 
-message =
-'No se pudo conectar al servidor';
+[
+'/unauthorized'
+]
 
-}
-
-else if (
-error.status === 400
-) {
-
-message =
-'Datos inválidos';
-
-}
-
-else if (
-error.status === 401
-) {
-
-message =
-'No autorizado';
-
-}
-
-else if (
-error.status === 403
-) {
-
-message =
-'Acceso denegado';
-
-}
-
-else if (
-error.status === 404
-) {
-
-message =
-'Recurso no encontrado';
-
-}
-
-else if (
-error.status === 500
-) {
-
-message =
-'Error interno del servidor';
-
-}
-
-const notification =
-inject(
-NotificationService
 );
 
-notification.error(
-message
+}
+
+if(
+err.status===403
+){
+
+router.navigate(
+
+[
+'/forbidden'
+]
+
 );
+
+}
 
 return throwError(
-() =>
-error
+()=>err
 );
 
 }

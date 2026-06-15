@@ -84,4 +84,46 @@ return this.http.put(
 
 }
 
+acceptApplication(
+id:number
+){
+
+return this.http.put(
+
+`${this.api}/accept?applicationId=${id}`,
+
+{}
+
+);
+
+}
+
+rejectApplication(
+id:number
+){
+
+return this.http.put(
+
+`${this.api}/reject?applicationId=${id}`,
+
+{}
+
+);
+
+}
+
+hireGraduate(
+id:number
+){
+
+return this.http.put(
+
+`${this.api}/finalize?applicationId=${id}`,
+
+{}
+
+);
+
+}
+
 }

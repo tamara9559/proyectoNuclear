@@ -1,0 +1,56 @@
+@if(vacancy){
+
+<h1>
+
+{{ vacancy.titulo }}
+
+</h1>
+
+<p>
+
+{{ vacancy.descripcion }}
+
+</p>
+
+<p>
+
+Carrera:
+{{ vacancy.carreraRequerida }}
+
+</p>
+
+<p>
+
+Ciudad:
+{{ vacancy.ciudad }}
+
+</p>
+
+<p>
+
+Modalidad:
+{{ vacancy.modalidad }}
+
+</p>
+
+<p>
+
+Remuneración:
+{{ vacancy.remuneracion }}
+
+</p>
+
+<button
+(click)="apply()">
+
+Aplicar
+
+</button>
+
+<p>
+
+{{message}}
+
+</p>
+
+}

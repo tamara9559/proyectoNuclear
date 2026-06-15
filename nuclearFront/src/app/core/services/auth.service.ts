@@ -66,7 +66,15 @@ export class AuthService {
               'correo',
               response.correo
             );
+
+            localStorage.setItem(
+'userid',
+String(
+response.userId
+)
+);
           }
+          
         )
 
       );
@@ -102,5 +110,16 @@ export class AuthService {
     ) ?? '';
 
   }
+  getUserId(): number {
+
+return Number(
+
+localStorage.getItem(
+'userid'
+)
+
+);
+
+}
 
 }
