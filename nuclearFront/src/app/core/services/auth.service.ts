@@ -19,7 +19,9 @@ export interface LoginResponse {
 
   token: string;
 
-  nombre: string;
+  userId: number;
+
+  correo: string;
 
   rol: string;
 
@@ -61,10 +63,9 @@ export class AuthService {
             );
 
             localStorage.setItem(
-              'nombre',
-              response.nombre
+              'correo',
+              response.correo
             );
-
           }
         )
 

@@ -6,21 +6,59 @@ Sistema de prácticas
 
 <nav>
 
+@if(
+role==='ADMIN'
+){
+
 <a routerLink="/users">
 Usuarios
 </a>
+
+}
+
+@if(
+role==='ADMIN'
+||
+role==='COORDINADOR'
+){
 
 <a routerLink="/companies">
 Empresas
 </a>
 
+}
+
+@if(
+role==='ADMIN'
+||
+role==='DOCENTE'
+){
+
 <a routerLink="/students">
 Estudiantes
 </a>
 
+}
+
+@if(
+role==='EMPRESA'
+||
+role==='ADMIN'
+){
+
 <a routerLink="/vacancies">
 Vacantes
 </a>
+
+}
+
+<button
+(click)="logout()"
+>
+
+Cerrar sesión
+
+</button>
 
 </nav>
 

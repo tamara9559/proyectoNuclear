@@ -102,8 +102,92 @@ import {
 Login
 }
 from './pages/login/login';
+import { roleGuard } from './core/guards/role.guard';
 
 export const routes: Routes = [
+
+    {
+
+path:
+'login',
+
+canActivate:
+[
+guestGuard
+],
+
+loadComponent:
+() =>
+
+import(
+'./pages/login/login'
+)
+
+.then(
+m =>
+m.Login
+)
+
+},{
+
+path:
+'monitorings',
+
+component:
+MonitoringList,
+
+canActivate:
+[
+roleGuard(
+[
+'ADMIN',
+'COORDINADOR'
+]
+)
+
+]
+
+},
+
+{
+
+path:
+'users',
+
+component:
+UserList,
+
+canActivate:
+[
+roleGuard(
+[
+'ADMIN'
+]
+)
+
+]
+
+},
+
+{
+
+path:
+'practices',
+
+component:
+PracticeList,
+
+canActivate:
+[
+roleGuard(
+[
+'ESTUDIANTE'
+]
+)
+
+]
+
+},
 
 {
 
@@ -116,11 +200,6 @@ children: [
 {
 path: '',
 component: Dashboard
-},
-
-{
-path: 'users',
-component: UserList
 },
 
 {
@@ -255,12 +334,6 @@ component:
 EvaluationForm
 },
 
-{
-path:
-'practices',
-component:
-PracticeList
-},
 
 {
 path:
@@ -318,14 +391,6 @@ FaqForm
 
 {
 path:
-'monitorings',
-
-component:
-MonitoringList
-},
-
-{
-path:
 'monitorings/new',
 
 component:
@@ -346,26 +411,6 @@ import(
 .then(
 m =>
 m.NotFound
-)
-
-},
-
-
-{
-
-path:
-
-'login',
-
-loadComponent:
-() =>
-import(
-'./pages/login/login'
-)
-
-.then(
-m =>
-m.Login
 )
 
 },

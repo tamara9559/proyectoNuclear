@@ -1,5 +1,6 @@
 import {
-Component
+Component,
+inject
 } from '@angular/core';
 
 import {
@@ -9,6 +10,11 @@ CommonModule
 import {
 Router
 } from '@angular/router';
+
+import {
+AuthService
+}
+from '../../core/services/auth.service';
 
 @Component({
 
@@ -30,59 +36,67 @@ styleUrl:
 
 })
 
+
+
 export class Dashboard {
 
 constructor(
 private router: Router
 ) {}
 
+private auth =
+inject(
+AuthService
+);
+
+role =
+this.auth.getRole();
+
 modules = [
 
 {
-title:
-'Usuarios',
-
-description:
-'Administrar usuarios del sistema',
-
-route:
-'/users'
+title:'Usuarios',
+description:'Administrar usuarios',
+route:'/users',
+roles:['ADMIN']
 },
 
 {
-title:
-'Empresas',
-
-description:
-'Gestionar empresas registradas',
-
-route:
-'/companies'
+title:'Empresas',
+description:'Empresas registradas',
+route:'/companies',
+roles:[
+'ADMIN',
+'COORDINADOR'
+]
 },
 
 {
-title:
-'Estudiantes',
-
-description:
-'Administrar estudiantes y prácticas',
-
-route:
-'/students'
-},
-
-{
-title:
-'Vacantes',
-
-description:
-'Gestionar ofertas de práctica',
-
-route:
-'/vacancies'
+title:'Vacantes',
+description:'Ver vacantes',
+route:'/vacancies',
+roles:[
+'EMPRESA',
+'ESTUDIANTE',
+'EGRESADO'
+]
 }
 
 ];
+
+visibleModules(){
+
+return this.modules.filter(
+
+m=>
+
+m.roles.includes(
+this.role
+)
+
+);
+
+}
 
 goTo(
 route: string

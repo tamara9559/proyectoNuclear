@@ -1,15 +1,19 @@
 import {
-Component
-} from '@angular/core';
+Component,
+inject
+}
+from '@angular/core';
 
 import {
-RouterModule
-} from '@angular/router';
-
-import {
-RouterLink,
+RouterModule,
 RouterOutlet
-} from '@angular/router';
+}
+from '@angular/router';
+
+import {
+AuthService
+}
+from '../../../core/services/auth.service';
 
 @Component({
 
@@ -19,10 +23,9 @@ selector:
 standalone:
 true,
 
-imports: [
+imports:[
 RouterModule,
 RouterOutlet
-
 ],
 
 templateUrl:
@@ -34,5 +37,22 @@ styleUrl:
 })
 
 export class Layout {
+
+private auth =
+inject(
+AuthService
+);
+
+role =
+this.auth.getRole();
+
+logout(): void {
+
+this.auth.logout();
+
+location.href =
+'/login';
+
+}
 
 }
