@@ -1,52 +1,105 @@
+import { Injectable, inject } from '@angular/core';
+
+import { HttpClient } from '@angular/common/http';
+
 import {
-Injectable
-} from '@angular/core';
+  Observable,
+  tap
+} from 'rxjs';
+
+export interface LoginRequest {
+
+  correo: string;
+
+  password: string;
+
+}
+
+export interface LoginResponse {
+
+  token: string;
+
+  nombre: string;
+
+  rol: string;
+
+}
 
 @Injectable({
-
-providedIn:
-'root'
-
+  providedIn: 'root'
 })
-
 export class AuthService {
 
-private tokenKey =
-'token';
+  private http =
+    inject(HttpClient);
 
-login(
-token:
-string
-): void {
+  private api =
+    'http://localhost:8080/api/auth';
 
-localStorage.setItem(
+  login(
+    data: LoginRequest
+  ): Observable<LoginResponse> {
 
-this.tokenKey,
+    return this.http
+      .post<LoginResponse>(
+        `${this.api}/login`,
+        data
+      )
+      .pipe(
 
-token
+        tap(
+          response => {
 
-);
+            localStorage.setItem(
+              'token',
+              response.token
+            );
 
-}
+            localStorage.setItem(
+              'rol',
+              response.rol
+            );
 
-logout(): void {
+            localStorage.setItem(
+              'nombre',
+              response.nombre
+            );
 
-localStorage.removeItem(
+          }
+        )
 
-this.tokenKey
+      );
 
-);
+  }
 
-}
+  logout(): void {
 
-isAuthenticated(): boolean {
+    localStorage.clear();
 
-return !!localStorage.getItem(
+  }
 
-this.tokenKey
+  isLogged(): boolean {
 
-);
+    return !!localStorage.getItem(
+      'token'
+    );
 
-}
+  }
+
+  getToken(): string {
+
+    return localStorage.getItem(
+      'token'
+    ) ?? '';
+
+  }
+
+  getRole(): string {
+
+    return localStorage.getItem(
+      'rol'
+    ) ?? '';
+
+  }
 
 }

@@ -350,33 +350,50 @@ m.NotFound
 
 },
 
+
 {
 
 path:
-'dashboard',
 
-component:
-Dashboard,
+'login',
 
-canActivate:
-[
-authGuard
-]
+loadComponent:
+() =>
+import(
+'./pages/login/login'
+)
+
+.then(
+m =>
+m.Login
+)
 
 },
 
 {
 
 path:
-'login',
 
-component:
-Login,
+'dashboard',
 
 canActivate:
+
 [
-guestGuard
-]
+
+authGuard
+
+],
+
+loadComponent:
+() =>
+import(
+'./pages/dashboard/dashboard'
+)
+
+.then(
+m =>
+m.Dashboard
+)
 
 }
 
