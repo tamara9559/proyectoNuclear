@@ -7,6 +7,7 @@ import com.proyecto.nuclear.repository.UserRepository;
 import com.proyecto.nuclear.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -17,6 +18,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final PasswordEncoder passwordEncoder;
 
     @Override
     public User createUser(User user) {
@@ -53,7 +55,7 @@ public class UserServiceImpl implements UserService {
                 new BCryptPasswordEncoder();
 
         user.setPasswordHash(
-                encoder.encode(
+                passwordEncoder.encode(
                         user.getPasswordHash()
                 )
         );
@@ -61,7 +63,9 @@ public class UserServiceImpl implements UserService {
         user.setFechaCreacion(
                 LocalDateTime.now()
         );
+
         user.setEstado(true);
+
         return userRepository.save(user);
     }
 
