@@ -1,10 +1,8 @@
 import {
-Injectable
-} from '@angular/core';
-
-import {
-BehaviorSubject
-} from 'rxjs';
+Injectable,
+signal
+}
+from '@angular/core';
 
 @Injectable({
 
@@ -15,26 +13,23 @@ providedIn:
 
 export class LoadingService {
 
-private loadingSubject =
-new BehaviorSubject(
+loading =
+
+signal(
 false
 );
 
-loading$ =
-this.loadingSubject
-.asObservable();
+show(){
 
-show(): void {
-
-this.loadingSubject.next(
+this.loading.set(
 true
 );
 
 }
 
-hide(): void {
+hide(){
 
-this.loadingSubject.next(
+this.loading.set(
 false
 );
 

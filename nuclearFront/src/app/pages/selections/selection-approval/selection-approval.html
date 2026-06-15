@@ -1,0 +1,23 @@
+<h1>
+
+Aprobaciones
+
+</h1>
+
+<div
+*ngFor="let a of applications">
+
+Usuario:
+{{a.usuarioId}}
+
+<button
+
+(click)="approve(
+a.id
+)">
+
+Contratar
+
+</button>
+
+</div>

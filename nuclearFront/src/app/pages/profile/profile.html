@@ -1,0 +1,77 @@
+@if(
+loading
+){
+
+<p>
+
+Cargando perfil...
+
+</p>
+
+}
+
+@else if(
+user
+){
+
+<h1>
+
+Mi perfil
+
+</h1>
+
+<div class="card">
+
+<p>
+
+Nombre:
+{{ user.nombres }}
+
+</p>
+
+<p>
+
+Apellido:
+{{ user.apellidos }}
+
+</p>
+
+<p>
+
+Correo:
+{{ user.correo }}
+
+</p>
+
+<p>
+
+Teléfono:
+{{ user.telefono }}
+
+</p>
+
+<p>
+
+Rol:
+{{ user.rol }}
+
+</p>
+
+<p>
+
+Estado:
+{{ user.estado }}
+
+</p>
+
+<button
+(click)="edit()"
+>
+
+Editar perfil
+
+</button>
+
+</div>
+
+}
