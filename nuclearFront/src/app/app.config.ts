@@ -30,6 +30,11 @@ loadingInterceptor
 }
 from './core/interceptors/loading.interceptor';
 
+import {
+  authInterceptor
+}
+from './core/interceptors/auth.interceptor';
+
 export const appConfig: ApplicationConfig = {
 
 providers: [
@@ -42,7 +47,8 @@ provideHttpClient(
 
 withInterceptors([
     loadingInterceptor,
-errorInterceptor
+errorInterceptor,
+authInterceptor
 ])
 )
 
