@@ -11,6 +11,8 @@ import {
 MatchingService
 } from '../../../core/services/matching.service';
 
+import { CandidateMatch } from '../../../core/models/candidate-match.model';
+
 @Component({
 
 selector:
@@ -38,8 +40,7 @@ inject(
 MatchingService
 );
 
-ranking =
-[];
+ranking: CandidateMatch[] = [];
 
 vacancyId =
 1;

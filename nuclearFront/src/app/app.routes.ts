@@ -51,6 +51,8 @@ import { authGuard } from './core/guards/auth.guard';
 import { guestGuard } from './core/guards/guest.guard';
 import { roleGuard } from './core/guards/role.guard';
 
+import { Register } from './pages/register/register';
+
 export const routes: Routes = [
 
 {
@@ -267,6 +269,11 @@ roleGuard([
 {
 path: 'monitorings/new',
 component: MonitoringForm
+},
+
+{
+  path: 'register',
+  component: Register
 }
 
 ]
