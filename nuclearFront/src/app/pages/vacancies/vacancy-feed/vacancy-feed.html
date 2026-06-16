@@ -1,18 +1,30 @@
+<p>
+Cantidad:
+{{ vacancies.length }}
+</p>
+
+<pre>
+{{ vacancies | json }}
+</pre>
 <h1>
-
 Vacantes disponibles
-
 </h1>
 
-<div class="grid">
-
-@for(
-vacancy of vacancies;
-track vacancy.id
-){
+<div *ngIf="vacancies.length > 0">
 
 <div
+class="grid"
+>
+
+<div
+
 class="card"
+
+*ngFor="
+let vacancy
+of vacancies
+"
+
 (click)="open(vacancy.id)"
 >
 
@@ -42,6 +54,12 @@ class="card"
 
 </div>
 
-}
+</div>
+
+</div>
+
+<div *ngIf="vacancies.length===0">
+
+No hay vacantes disponibles
 
 </div>

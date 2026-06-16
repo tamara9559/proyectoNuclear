@@ -20,13 +20,17 @@ VacancyService
 }
 from '../../../core/services/vacancy.service';
 
+import {
+ChangeDetectorRef
+}
+from '@angular/core';
+
 @Component({
 
 selector:
 'app-vacancy-feed',
 
-standalone:
-true,
+standalone:true,
 
 imports:[
 CommonModule
@@ -35,13 +39,19 @@ CommonModule
 templateUrl:
 './vacancy-feed.html',
 
-styleUrl:
+styleUrls:[
 './vacancy-feed.css'
+]
 
 })
 
 export class VacancyFeed
 implements OnInit {
+
+    private cd =
+inject(
+ChangeDetectorRef
+);
 
 private service =
 inject(
@@ -55,23 +65,29 @@ Router
 
 vacancies:
 any[] = [];
-
 ngOnInit(): void {
 
 this.service
+.findOpen()
 
-.findAll()
+.subscribe({
 
-.subscribe(
+next:(data)=>{
 
-data=>{
-
-this.vacancies =
+this.vacancies=
 data;
+
+this.cd.detectChanges();
+
+},
+
+error:(e)=>{
+
+console.error(e);
 
 }
 
-);
+});
 
 }
 

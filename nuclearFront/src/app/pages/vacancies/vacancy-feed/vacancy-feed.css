@@ -8,21 +8,40 @@ auto-fit,
 minmax(
 300px,
 1fr
-));
+)
+);
 
 gap:20px;
+
+padding:20px;
 
 }
 
 .card{
 
-border:1px solid #ddd;
+background:white;
+
+color:black;
+
+border:
+
+1px solid #ddd;
 
 padding:20px;
 
+border-radius:10px;
+
 cursor:pointer;
 
-border-radius:12px;
+box-shadow:
+
+0 2px 8px
+rgba(
+0,
+0,
+0,
+0.1
+);
 
 }
 
@@ -30,7 +49,13 @@ border-radius:12px;
 
 transform:
 translateY(
--4px
+-2px
 );
+
+}
+
+h1{
+
+padding:20px;
 
 }

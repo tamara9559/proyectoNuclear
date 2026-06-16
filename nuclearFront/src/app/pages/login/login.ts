@@ -6,7 +6,7 @@ from '@angular/core';
 
 import {
   FormBuilder,
-  ReactiveFormsModule
+  ReactiveFormsModule,
 }
 from '@angular/forms';
 
@@ -20,6 +20,8 @@ import {
 }
 from '../../core/services/auth.service';
 
+import { RouterLink } from '@angular/router';
+
 @Component({
 
   selector:
@@ -27,7 +29,8 @@ from '../../core/services/auth.service';
 
   imports: [
 
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    RouterLink
 
   ],
 

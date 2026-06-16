@@ -62,6 +62,11 @@ canActivate: [guestGuard]
 },
 
 {
+  path: 'register',
+  component: Register
+},
+
+{
 path: '',
 component: Layout,
 canActivate: [authGuard],
@@ -270,11 +275,6 @@ roleGuard([
 path: 'monitorings/new',
 component: MonitoringForm
 },
-
-{
-  path: 'register',
-  component: Register
-}
 
 ]
 
