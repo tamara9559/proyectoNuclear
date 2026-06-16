@@ -66,28 +66,38 @@ true;
 
 ngOnInit(): void {
 
-this.profile
+this.loading = true;
 
+this.profile
 .getProfile()
 
 .subscribe({
 
-next:
-data=>{
+next:(data)=>{
 
-this.user =
-data;
+console.log('perfil recibido', data);
 
-this.loading =
-false;
+this.user = data;
+
+this.loading = false;
+
+console.log(
+'loading:',
+this.loading
+);
+
+console.log(
+'user:',
+this.user
+);
 
 },
 
-error:
-()=>{
+error:(e)=>{
 
-this.loading =
-false;
+console.error(e);
+
+this.loading = false;
 
 }
 

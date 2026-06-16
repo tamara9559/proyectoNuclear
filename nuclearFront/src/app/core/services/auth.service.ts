@@ -58,9 +58,11 @@ export class AuthService {
             );
 
             localStorage.setItem(
-              'rol',
-              response.rol
-            );
+  'rol',
+  response.rol.startsWith('ROLE_')
+    ? response.rol.replace('ROLE_', '')
+    : response.rol
+);
 
             localStorage.setItem(
               'correo',
@@ -104,12 +106,10 @@ response.userId
   }
 
   getRole(): string {
+  const role = localStorage.getItem('rol') ?? '';
+  return role.replace('ROLE_', '');
+}
 
-    return localStorage.getItem(
-      'rol'
-    ) ?? '';
-
-  }
   getUserId(): number {
 
 return Number(
