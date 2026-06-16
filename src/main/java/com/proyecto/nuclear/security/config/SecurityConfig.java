@@ -39,7 +39,11 @@ public class SecurityConfig {
 
             throws Exception {
 
-        http
+        http.cors(
+                        cors ->
+                        {
+                        }
+                )
 
                 .csrf(
                         c ->
