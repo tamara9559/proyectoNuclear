@@ -69,15 +69,20 @@ public class SecurityConfig {
                                 auth
 
                                         .requestMatchers(
-                                                "/api/auth/**"
+                                                "/api/auth/**",
+                                                "/api/vacancies/open"
                                         )
 
                                         .permitAll()
 
                                         .requestMatchers(
+                                                "/api/users/email/**"
+                                        )
+                                        .authenticated()
+
+                                        .requestMatchers(
                                                 "/api/users/**"
                                         )
-
                                         .hasRole(
                                                 "ADMIN"
                                         )
@@ -92,7 +97,8 @@ public class SecurityConfig {
 
                                                 "COORDINADOR"
 
-                                        )
+                                        ).requestMatchers("/api/companies/**")
+                                        .hasAnyRole("ADMIN", "COORDINADOR","EMPRESA")
 
                                         .anyRequest()
 
