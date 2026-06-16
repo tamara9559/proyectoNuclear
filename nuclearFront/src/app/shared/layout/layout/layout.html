@@ -4,67 +4,53 @@
 Sistema de prácticas
 </h1>
 
+<p>
+ROL →
+{{ role }}
+</p>
+
 <nav>
-    <a
+
+<a
 routerLink="/profile"
 >
-
 Mi perfil
-
+</a>
+<a
+*ngIf="false"
+routerLink="/users"
+>
+Administrar usuarios
 </a>
 
-@if(
-role==='ADMIN'
-){
-
-<a routerLink="/users">
-Usuarios
+<a
+*ngIf="false"
+routerLink="/companies"
+>
+Crear empresa
 </a>
 
-}
-
-@if(
-role==='ADMIN'
-||
-role==='COORDINADOR'
-){
-
-<a routerLink="/companies">
-Empresas
-</a>
-
-}
-
-@if(
+<a
+*ngIf="
 role==='ADMIN'
 ||
 role==='DOCENTE'
-){
-
-<a routerLink="/students">
+"
+routerLink="/students"
+>
 Estudiantes
 </a>
 
-}
-
-@if(
-role==='EMPRESA'
-||
-role==='ADMIN'
-){
-
-<a routerLink="/vacancies">
+<a
+routerLink="/vacancies"
+>
 Vacantes
 </a>
-
-}
 
 <button
 (click)="logout()"
 >
-
 Cerrar sesión
-
 </button>
 
 </nav>

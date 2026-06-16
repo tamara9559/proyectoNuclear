@@ -5,27 +5,39 @@ inject
 from '@angular/core';
 
 import {
+Router,
 RouterModule,
-RouterOutlet
+RouterOutlet,
+NavigationEnd
 }
 from '@angular/router';
+
+import {
+filter
+}
+from 'rxjs';
 
 import {
 AuthService
 }
 from '../../../core/services/auth.service';
 
+import {
+CommonModule
+}
+from '@angular/common';
+
 @Component({
 
 selector:
 'app-layout',
 
-standalone:
-true,
+standalone:true,
 
 imports:[
 RouterModule,
-RouterOutlet
+RouterOutlet,
+CommonModule
 ],
 
 templateUrl:
@@ -43,15 +55,52 @@ inject(
 AuthService
 );
 
-role =
-this.auth.getRole();
+private router =
+inject(
+Router
+);
 
-logout(): void {
+role='';
+
+constructor(){
+
+this.router.events
+
+.pipe(
+
+filter(
+e=>
+e instanceof NavigationEnd
+)
+
+)
+
+.subscribe(()=>{
+
+this.role =
+
+this.auth
+
+.getRole()
+
+.trim();
+
+console.log(
+'ROLE:',
+this.role
+);
+
+});
+
+}
+
+logout(){
 
 this.auth.logout();
 
-location.href =
-'/login';
+this.router.navigate([
+'/login'
+]);
 
 }
 
