@@ -19,7 +19,7 @@ providedIn: 'root'
 export class VacancyService {
 
 private api =
-'http://localhost:8080/api/vacancies';
+'http://zealous-emotion-production-bfb7.up.railway.app/api/vacancies';
 
 constructor(
 private http: HttpClient

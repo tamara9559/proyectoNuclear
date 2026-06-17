@@ -14,7 +14,7 @@ export class EvaluationService {
   private http = inject(HttpClient);
 
   private api =
-    'http://localhost:8080/api/evaluations';
+    'http://zealous-emotion-production-bfb7.up.railway.app/api/evaluations';
 
   create(
     evaluation: Evaluation

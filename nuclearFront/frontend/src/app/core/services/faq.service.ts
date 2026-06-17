@@ -16,7 +16,7 @@ export class FaqService {
   private http = inject(HttpClient);
 
   private api =
-    'http://localhost:8080/api/faqs';
+    'http://zealous-emotion-production-bfb7.up.railway.app/api/faqs';
 
   create(
     faq: FAQ

@@ -14,7 +14,7 @@ export class StudentService {
   private http = inject(HttpClient);
 
   private api =
-    'http://localhost:8080/api/students';
+    'http://zealous-emotion-production-bfb7.up.railway.app/api/students';
 
   create(
     student: Student

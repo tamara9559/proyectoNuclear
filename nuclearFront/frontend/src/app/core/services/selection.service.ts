@@ -22,7 +22,7 @@ HttpClient
 );
 
 private api =
-'http://localhost:8080/api/selections';
+'http://zealous-emotion-production-bfb7.up.railway.app/api/selections';
 
 sendResume(
 studentId:number,

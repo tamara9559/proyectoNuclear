@@ -36,7 +36,7 @@ export class AuthService {
     inject(HttpClient);
 
   private api =
-    'http://localhost:8080/api/auth';
+    'http://zealous-emotion-production-bfb7.up.railway.app/api/auth';
 
   login(
     data: LoginRequest

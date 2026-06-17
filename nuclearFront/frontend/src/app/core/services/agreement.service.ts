@@ -14,7 +14,7 @@ export class AgreementService {
   private http = inject(HttpClient);
 
   private api =
-    'http://localhost:8080/api/agreements';
+    'http://zealous-emotion-production-bfb7.up.railway.app/api/agreements';
 
   create(
     agreement: Agreement
