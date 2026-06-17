@@ -16,7 +16,7 @@ export class PracticeService {
   private http = inject(HttpClient);
 
   private api =
-    'https://zealous-emotion-production-bfb7.up.railway.app/api/practices';
+    'https://proyectonuclear-production.up.railway.app/api/practices';
 
   create(
     practice: Practice

@@ -16,7 +16,7 @@ export class MonitoringService {
   private http = inject(HttpClient);
 
   private api =
-    'https://zealous-emotion-production-bfb7.up.railway.app/api/monitorings';
+    'https://proyectonuclear-production.up.railway.app/api/monitorings';
 
   registerVisit(
     monitoring: Monitoring
