@@ -53,6 +53,8 @@ export class UserForm implements OnInit {
 
   editing = false;
 
+  isProfileEdit = false;
+
   userId?: number;
 
   form =
@@ -96,6 +98,11 @@ export class UserForm implements OnInit {
     });
 
   ngOnInit(): void {
+
+    this.isProfileEdit =
+this.router.url.includes(
+'/profile/edit'
+);
 
     const id =
       this.route.snapshot.paramMap.get(
@@ -177,8 +184,12 @@ export class UserForm implements OnInit {
         .subscribe(() => {
 
           this.router.navigate([
-            '/users'
-          ]);
+
+this.isProfileEdit
+? '/profile'
+: '/users'
+
+]);
 
         });
 
@@ -191,8 +202,12 @@ export class UserForm implements OnInit {
         .subscribe(() => {
 
           this.router.navigate([
-            '/users'
-          ]);
+
+this.isProfileEdit
+? '/profile'
+: '/users'
+
+]);
 
         });
 
@@ -203,8 +218,12 @@ export class UserForm implements OnInit {
   cancel(): void {
 
   this.router.navigate([
-    '/users'
-  ]);
+
+this.isProfileEdit
+? '/profile'
+: '/users'
+
+]);
 
 }
 

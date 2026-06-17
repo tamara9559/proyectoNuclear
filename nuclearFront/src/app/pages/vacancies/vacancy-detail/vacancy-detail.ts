@@ -20,6 +20,14 @@ import {
 AuthService
 } from '../../../core/services/auth.service';
 
+import {
+ChangeDetectorRef
+} from '@angular/core';
+
+import {
+CommonModule
+} from '@angular/common';
+
 @Component({
 
 selector:
@@ -27,6 +35,10 @@ selector:
 
 standalone:
 true,
+
+imports:[
+CommonModule
+],
 
 templateUrl:
 './vacancy-detail.html'
@@ -56,7 +68,16 @@ inject(
 AuthService
 );
 
+private cd =
+inject(
+ChangeDetectorRef
+);
+
 vacancy:any;
+
+role = '';
+
+canApply = false;
 
 message='';
 
@@ -73,13 +94,40 @@ this.route.snapshot
 
 );
 
+this.role =
+this.auth.getRole();
+
+this.canApply =
+
+this.role === 'EGRESADO'
+
+||
+
+this.role === 'COORDINADOR';
+
+console.log(
+'ID VACANTE:',
+id
+);
+
 this.service
 .findById(id)
 
-.subscribe(v=>{
+.subscribe({
 
-this.vacancy =
-v;
+next:(v)=>{
+
+this.vacancy = v;
+
+this.cd.detectChanges();
+
+},
+
+error:(e)=>{
+
+console.error(e);
+
+}
 
 });
 

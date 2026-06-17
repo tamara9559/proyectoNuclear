@@ -90,6 +90,11 @@ component: Dashboard
   },
 
   {
+  path: 'profile/edit/:id',
+  component: UserForm
+},
+
+  {
     path: 'users',
     loadComponent: () =>
       import('./pages/users/user-list/user-list')
@@ -105,8 +110,8 @@ component: Dashboard
 
   {
   path: 'users/edit/:id',
-  component: UserForm,
-  canActivate: [roleGuard(['ADMIN'])]
+  component: UserForm
+  
   },
 
   {
