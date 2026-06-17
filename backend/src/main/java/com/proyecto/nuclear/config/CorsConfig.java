@@ -26,8 +26,9 @@ public class CorsConfig {
 
         config.setAllowedOrigins(
                 List.of(
-                        "http://localhost:4200",
-                        "http://zealous-emotion-production-bfb7.up.railway.app"
+                        "https://localhost:4200",
+                        "https://zealous-emotion-production-bfb7.up.railway.app",
+                        "https://proyectonuclear-production.up.railway.app"
                 )
         );
 
