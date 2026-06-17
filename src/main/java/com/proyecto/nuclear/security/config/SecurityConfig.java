@@ -70,7 +70,8 @@ public class SecurityConfig {
 
                                         .requestMatchers(
                                                 "/api/auth/**",
-                                                "/api/vacancies/open"
+                                                "/api/vacancies/open",
+                                                "/api/users"
                                         )
 
                                         .permitAll()

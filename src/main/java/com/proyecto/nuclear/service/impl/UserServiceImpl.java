@@ -23,50 +23,73 @@ public class UserServiceImpl implements UserService {
     @Override
     public User createUser(User user) {
 
-        if (user.getNombres() == null
-                || user.getNombres().trim().isEmpty()) {
-
+        if (
+                user.getNombres() == null ||
+                        user.getNombres().trim().isEmpty()
+        ) {
             throw new RuntimeException(
-                    "El nombre es obligatorio");
+                    "El nombre es obligatorio"
+            );
         }
 
-        if (user.getCorreo() == null
-                || user.getCorreo().trim().isEmpty()) {
-
+        if (
+                user.getCorreo() == null ||
+                        user.getCorreo().trim().isEmpty()
+        ) {
             throw new RuntimeException(
-                    "El correo es obligatorio");
+                    "El correo es obligatorio"
+            );
         }
 
-        if (user.getPasswordHash() == null
-                || user.getPasswordHash().trim().isEmpty()) {
-
+        if (
+                user.getPasswordHash() == null ||
+                        user.getPasswordHash().trim().isEmpty()
+        ) {
             throw new RuntimeException(
-                    "La contraseña es obligatoria");
+                    "La contraseña es obligatoria"
+            );
         }
 
-        if (userRepository.existsByCorreo(
-                user.getCorreo())) {
-
+        if (
+                user.getRol() == null
+        ) {
             throw new RuntimeException(
-                    "correo ya registado");
+                    "Debe seleccionar un rol"
+            );
         }
 
-        BCryptPasswordEncoder encoder =
-                new BCryptPasswordEncoder();
-
-        user.setPasswordHash(
-                passwordEncoder.encode(
-                        user.getPasswordHash()
+        if (
+                userRepository.existsByCorreo(
+                        user.getCorreo()
                 )
-        );
+        ) {
+
+            throw new RuntimeException(
+                    "Correo ya registrado"
+            );
+
+        }
 
         user.setFechaCreacion(
                 LocalDateTime.now()
         );
 
-        user.setEstado(true);
+        user.setEstado(
+                true
+        );
 
-        return userRepository.save(user);
+        user.setPasswordHash(
+
+                passwordEncoder.encode(
+                        user.getPasswordHash()
+                )
+
+        );
+
+        return userRepository.save(
+                user
+        );
+
     }
 
     @Override
