@@ -81,12 +81,7 @@ public class SecurityConfig {
                                         )
                                         .authenticated()
 
-                                        .requestMatchers(
-                                                "/api/users/**"
-                                        )
-                                        .hasRole(
-                                                "ADMIN"
-                                        )
+
 
                                         .requestMatchers(
                                                 "/api/monitorings/**"
