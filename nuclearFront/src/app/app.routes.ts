@@ -110,25 +110,41 @@ component: Dashboard
   },
 
   {
-  path: 'students',
-  component: StudentList,
-  canActivate: [roleGuard(['ADMIN', 'DOCENTE'])]
-  },
+path:'students',
+component:StudentList,
+canActivate:[
+roleGuard([
+'DOCENTE',
+'COORDINADOR'
+])
+]
+},
 
   {
-  path: 'students/new',
-  component: StudentForm
-  },
+path:'students/new',
+component:StudentForm,
+canActivate:[
+roleGuard([
+'ADMIN'
+])
+]
+},
 
   {
-  path: 'students/edit/:id',
-  component: StudentForm
-  },
+path:'students/edit/:id',
+component:StudentForm,
+canActivate:[
+roleGuard([
+'DOCENTE',
+'COORDINADOR'
+])
+]
+},
 
   {
   path: 'companies',
   component: CompanyList,
-  canActivate: [roleGuard(['ADMIN', 'COORDINADOR', 'EMPRESA'])]
+  canActivate: [roleGuard(['ADMIN', 'COORDINADOR'])]
 },
 
 
@@ -139,14 +155,27 @@ component: Dashboard
   },
 
   {
-  path: 'companies/edit/:id',
-  component: CompanyForm
-  },
+path:'companies/edit/:id',
+component:CompanyForm,
+canActivate:[
+roleGuard([
+'COORDINADOR'
+])
+]
+},
 
   {
-  path: 'vacancies',
-  component: VacancyFeed
-  },
+path:'vacancies',
+component:VacancyFeed,
+canActivate:[
+roleGuard([
+'ESTUDIANTE',
+'EGRESADO',
+'EMPRESA',
+'COORDINADOR'
+])
+]
+},
 
   {
   path: 'vacancies/:id',
@@ -154,49 +183,91 @@ component: Dashboard
   },
 
   {
-  path: 'vacancies/new',
-  component: VacancyForm
-  },
+path:'vacancies/new',
+component:VacancyForm,
+canActivate:[
+roleGuard([
+'EMPRESA'
+])
+]
+},
 
   {
-  path: 'vacancies/edit/:id',
-  component: VacancyForm
-  },
+path:'vacancies/edit/:id',
+component:VacancyForm,
+canActivate:[
+roleGuard([
+'EMPRESA'
+])
+]
+},
 
   {
-  path: 'matching',
-  component: Ranking
-  },
+path:'matching',
+component:Ranking,
+canActivate:[
+roleGuard([
+'ESTUDIANTE',
+'COORDINADOR'
+])
+]
+},
+  {
+path:'applications',
+component:ApplicationList,
+canActivate:[
+roleGuard([
+'EGRESADO'
+])
+]
+},
 
   {
-  path: 'applications',
-  component: ApplicationList
-  },
-
-  {
-  path: 'applications/new',
-  component: ApplicationForm
-  },
+path:'applications/new',
+component:ApplicationForm,
+canActivate:[
+roleGuard([
+'EGRESADO'
+])
+]
+},
 
   {
   path: 'application-review',
   component: ApplicationReview
   },
 
-  {
-  path: 'selection',
-  component: SelectionActions
-  },
+ {
+path:'selection',
+component:SelectionActions,
+canActivate:[
+roleGuard([
+'EMPRESA',
+'COORDINADOR'
+])
+]
+},
 
   {
-  path: 'selection-approval',
-  component: SelectionApproval
-  },
+path:'selection-approval',
+component:SelectionApproval,
+canActivate:[
+roleGuard([
+'COORDINADOR'
+])
+]
+},
 
   {
-  path: 'agreements',
-  component: AgreementList
-  },
+path:'agreements',
+component:AgreementList,
+canActivate:[
+roleGuard([
+'EMPRESA',
+'COORDINADOR'
+])
+]
+},
 
   {
   path: 'agreements/new',
@@ -209,9 +280,15 @@ component: Dashboard
   },
 
   {
-  path: 'evaluations',
-  component: EvaluationList
-  },
+path:'evaluations',
+component:EvaluationList,
+canActivate:[
+roleGuard([
+'DOCENTE',
+'EMPRESA'
+])
+]
+},
 
   {
   path: 'evaluations/new',
@@ -242,9 +319,15 @@ component: Dashboard
   },
 
   {
-  path: 'documents',
-  component: DocumentList
-  },
+path:'documents',
+component:DocumentList,
+canActivate:[
+roleGuard([
+'ESTUDIANTE',
+'COORDINADOR'
+])
+]
+},
 
   {
   path: 'documents/new',
@@ -252,9 +335,18 @@ component: Dashboard
   },
 
   {
-  path: 'faqs',
-  component: FaqList
-  },
+path:'faqs',
+component:FaqList,
+canActivate:[
+roleGuard([
+'ESTUDIANTE',
+'EGRESADO',
+'EMPRESA',
+'DOCENTE',
+'COORDINADOR'
+])
+]
+},
 
   {
   path: 'faqs/new',
@@ -271,7 +363,7 @@ component: Dashboard
   component: MonitoringList,
   canActivate: [
   roleGuard([
-  'ADMIN',
+  'DOCENTE',
   'COORDINADOR'
   ])
   ]

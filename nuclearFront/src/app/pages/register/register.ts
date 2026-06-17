@@ -82,6 +82,16 @@ rol:['']
 
 register(){
 
+if(!this.form.value.rol){
+
+alert(
+'Seleccione un rol'
+);
+
+return;
+
+}
+
 this.users
 
 .create({

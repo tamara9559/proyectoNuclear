@@ -25,6 +25,11 @@ ChangeDetectorRef
 }
 from '@angular/core';
 
+import {
+AuthService
+}
+from '../../../core/services/auth.service';
+
 @Component({
 
 selector:
@@ -63,6 +68,14 @@ inject(
 Router
 );
 
+private auth =
+inject(
+AuthService
+);
+
+role =
+this.auth.getRole();
+
 vacancies:
 any[] = [];
 ngOnInit(): void {
@@ -99,6 +112,16 @@ this.router.navigate([
 
 '/vacancies',
 id
+
+]);
+
+}
+
+create(){
+
+this.router.navigate([
+
+'/vacancies/new'
 
 ]);
 

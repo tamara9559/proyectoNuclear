@@ -3,6 +3,9 @@
 Empresas
 
 </h1>
+@if (
+role === 'COORDINADOR'
+) {
 
 <button
 (click)="goToCreate()"
@@ -11,6 +14,8 @@ Empresas
 Crear empresa
 
 </button>
+
+}
 
 @if (loading) {
 
