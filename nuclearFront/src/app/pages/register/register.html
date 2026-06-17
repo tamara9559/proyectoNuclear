@@ -1,7 +1,87 @@
-<h1>Registro</h1>
+<form
+[formGroup]="form"
+(ngSubmit)="register()"
+>
 
-<p>Página de registro funcionando</p>
+<h1>
+Registro
+</h1>
 
-<button routerLink="/login">
-Volver al login
+<input
+placeholder="Nombre"
+formControlName="nombres"
+/>
+
+<br>
+
+<input
+placeholder="Apellido"
+formControlName="apellidos"
+/>
+
+<br>
+
+<input
+type="email"
+placeholder="Correo"
+formControlName="correo"
+/>
+
+<br>
+
+<input
+type="password"
+placeholder="Contraseña"
+formControlName="password"
+/>
+
+<br>
+
+<input
+placeholder="Teléfono"
+formControlName="telefono"
+/>
+
+<br>
+
+<select
+formControlName="rol"
+>
+
+<option value="">
+Seleccione rol
+</option>
+
+<option value="ESTUDIANTE">
+Estudiante
+</option>
+
+<option value="EGRESADO">
+Egresado
+</option>
+
+<option value="EMPRESA">
+Empresa
+</option>
+
+<option value="DOCENTE">
+Docente
+</option>
+
+<option value="COORDINADOR">
+Coordinador
+</option>
+
+</select>
+
+<br>
+
+<button
+type="submit"
+>
+
+Registrarse
+
 </button>
+
+</form>

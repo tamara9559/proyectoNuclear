@@ -1,7 +1,8 @@
 import {
 Component,
 OnInit,
-inject
+inject,
+ChangeDetectorRef
 }
 from '@angular/core';
 
@@ -27,21 +28,17 @@ from '../../core/models/user.model';
 
 @Component({
 
-selector:
-'app-profile',
+selector:'app-profile',
 
-standalone:
-true,
+standalone:true,
 
 imports:[
 CommonModule
 ],
 
-templateUrl:
-'./profile.html',
+templateUrl:'./profile.html',
 
-styleUrl:
-'./profile.css'
+styleUrl:'./profile.css'
 
 })
 
@@ -49,24 +46,19 @@ export class Profile
 implements OnInit {
 
 private profile =
-inject(
-ProfileService
-);
+inject(ProfileService);
 
 private router =
-inject(
-Router
-);
+inject(Router);
 
-user?:
-User;
+private cdr =
+inject(ChangeDetectorRef);
 
-loading =
-true;
+user?: User;
+
+loading = true;
 
 ngOnInit(): void {
-
-this.loading = true;
 
 this.profile
 .getProfile()
@@ -75,21 +67,11 @@ this.profile
 
 next:(data)=>{
 
-console.log('perfil recibido', data);
-
 this.user = data;
 
 this.loading = false;
 
-console.log(
-'loading:',
-this.loading
-);
-
-console.log(
-'user:',
-this.user
-);
+this.cdr.detectChanges();
 
 },
 
@@ -98,6 +80,8 @@ error:(e)=>{
 console.error(e);
 
 this.loading = false;
+
+this.cdr.detectChanges();
 
 }
 
