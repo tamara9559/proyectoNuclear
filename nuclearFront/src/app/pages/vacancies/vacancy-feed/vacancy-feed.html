@@ -1,14 +1,23 @@
-<p>
-Cantidad:
-{{ vacancies.length }}
-</p>
 
-<pre>
-{{ vacancies | json }}
-</pre>
 <h1>
+
 Vacantes disponibles
+
 </h1>
+
+@if (
+role === 'EMPRESA'
+) {
+
+<button
+(click)="create()"
+>
+
+Publicar vacante
+
+</button>
+
+}
 
 <div *ngIf="vacancies.length > 0">
 

@@ -16,6 +16,16 @@ AuthService
 }
 from '../../core/services/auth.service';
 
+interface DashboardModule {
+
+title: string;
+
+description: string;
+
+route: string;
+
+}
+
 @Component({
 
 selector:
@@ -24,7 +34,7 @@ selector:
 standalone:
 true,
 
-imports: [
+imports:[
 CommonModule
 ],
 
@@ -36,63 +46,213 @@ styleUrl:
 
 })
 
-
-
 export class Dashboard {
-
-constructor(
-private router: Router
-) {}
 
 private auth =
 inject(
 AuthService
 );
 
+constructor(
+private router: Router
+){}
+
 role =
 this.auth.getRole();
 
-modules = [
+roleModules:
+Record<
+string,
+DashboardModule[]
+> = {
+
+ESTUDIANTE:[
 
 {
-title:'Usuarios',
-description:'Administrar usuarios',
-route:'/users',
-roles:['ADMIN']
+title:'Vacantes',
+description:'Consultar oportunidades',
+route:'/vacancies'
+},
+
+{
+title:'Mi práctica',
+description:'Ver estado de práctica',
+route:'/practices'
+},
+
+{
+title:'Documentos',
+description:'Gestionar documentos',
+route:'/documents'
+},
+
+{
+title:'FAQs',
+description:'Preguntas frecuentes',
+route:'/faqs'
+}
+
+],
+
+EGRESADO:[
+
+{
+title:'Vacantes',
+description:'Buscar ofertas',
+route:'/vacancies'
+},
+
+{
+title:'Postulaciones',
+description:'Gestionar postulaciones',
+route:'/applications'
+},
+
+{
+title:'FAQs',
+description:'Preguntas frecuentes',
+route:'/faqs'
+}
+
+],
+
+EMPRESA:[
+
+{
+title:'Mis vacantes',
+description:'Administrar vacantes',
+route:'/vacancies'
+},
+
+{
+title:'Selección',
+description:'Gestionar candidatos',
+route:'/selection'
+},
+
+{
+title:'Convenios',
+description:'Administrar convenios',
+route:'/agreements'
+},
+
+{
+title:'Evaluaciones',
+description:'Registrar evaluaciones',
+route:'/evaluations'
+}
+
+],
+
+DOCENTE:[
+
+{
+title:'Estudiantes',
+description:'Consultar estudiantes',
+route:'/students'
+},
+
+{
+title:'Seguimiento',
+description:'Monitoreo académico',
+route:'/monitorings'
+},
+
+{
+title:'Evaluaciones',
+description:'Evaluar estudiantes',
+route:'/evaluations'
+}
+
+],
+
+COORDINADOR:[
+
+{
+title:'Estudiantes',
+description:'Administrar estudiantes',
+route:'/students'
 },
 
 {
 title:'Empresas',
-description:'Empresas registradas',
-route:'/companies',
-roles:[
-'ADMIN',
-'COORDINADOR'
-]
+description:'Administrar empresas',
+route:'/companies'
 },
 
 {
 title:'Vacantes',
-description:'Ver vacantes',
-route:'/vacancies',
-roles:[
-'EMPRESA',
-'ESTUDIANTE',
-'EGRESADO'
-]
+description:'Gestionar vacantes',
+route:'/vacancies'
+},
+
+{
+title:'Matching',
+description:'Relacionar perfiles',
+route:'/matching'
+},
+
+{
+title:'Selección',
+description:'Proceso de selección',
+route:'/selection'
+},
+
+{
+title:'Prácticas',
+description:'Administrar prácticas',
+route:'/practices'
+},
+
+{
+title:'Convenios',
+description:'Gestionar convenios',
+route:'/agreements'
+},
+
+{
+title:'Documentos',
+description:'Administrar documentos',
+route:'/documents'
+},
+
+{
+title:'Seguimiento',
+description:'Monitorear procesos',
+route:'/monitorings'
+},
+
+{
+title:'FAQs',
+description:'Administrar preguntas',
+route:'/faqs'
 }
 
-];
+],
 
-visibleModules(){
+ADMIN:[
 
-return this.modules.filter(
+{
+title:'Usuarios',
+description:'Administrar usuarios',
+route:'/users'
+}
 
-m=>
+]
 
-m.roles.includes(
+};
+
+visibleModules(): DashboardModule[] {
+
+return (
+
+this.roleModules[
 this.role
-)
+]
+
+??
+
+[]
 
 );
 

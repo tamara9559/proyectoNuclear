@@ -101,15 +101,7 @@ inject(
 Router
 );
 
-goToCreate(): void {
 
-this.router.navigate([
-
-'/students/new'
-
-]);
-
-}
 
 goToEdit(
 id: number

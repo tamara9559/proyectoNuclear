@@ -21,6 +21,11 @@ import {
 CompanyService
 } from '../../../core/services/company.service';
 
+import {
+AuthService
+}
+from '../../../core/services/auth.service';
+
 @Component({
 
 selector:
@@ -56,6 +61,14 @@ private router =
 inject(
 Router
 );
+
+private auth =
+inject(
+AuthService
+);
+
+role =
+this.auth.getRole();
 
 companies:
 Company[] =
