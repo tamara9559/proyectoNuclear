@@ -80,6 +80,11 @@
   },
 
   {
+path: 'dashboard',
+component: Dashboard
+},
+
+  {
   path: 'profile',
   component: Profile
   },
@@ -125,10 +130,7 @@
   component: CompanyList,
   canActivate: [roleGuard(['ADMIN', 'COORDINADOR', 'EMPRESA'])]
 },
-{
-path: 'dashboard',
-component: Dashboard
-},
+
 
   {
     path: 'companies/new',
