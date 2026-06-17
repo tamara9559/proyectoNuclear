@@ -14,7 +14,7 @@ export class ApplicationService {
   private http = inject(HttpClient);
 
   private api =
-    'http://zealous-emotion-production-bfb7.up.railway.app/api/applications';
+    'https://zealous-emotion-production-bfb7.up.railway.app/api/applications';
 
   apply(
     application: Application

@@ -30,7 +30,7 @@ HttpClient
 );
 
 private api =
-'http://zealous-emotion-production-bfb7.up.railway.app/api/matching';
+'https://zealous-emotion-production-bfb7.up.railway.app/api/matching';
 
 ranking(
 vacancyId: number

@@ -14,7 +14,7 @@ export class DocumentService {
   private http = inject(HttpClient);
 
   private api =
-    'http://zealous-emotion-production-bfb7.up.railway.app/api/documents';
+    'https://zealous-emotion-production-bfb7.up.railway.app/api/documents';
 
   upload(
     document: Document
