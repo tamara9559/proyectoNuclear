@@ -93,11 +93,10 @@ edit(){
 
 this.router.navigate([
 
-'/users/edit',
+'/profile/edit',
 this.user?.id
 
 ]);
 
 }
-
 }
